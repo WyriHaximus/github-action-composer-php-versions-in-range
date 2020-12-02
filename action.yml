@@ -1,5 +1,5 @@
 name: 'Composer PHP versions in range'
-description: 'Get '
+description: 'Get PHP versions in range from composer.json'
 branding:
   icon: 'maximize'
   color: 'green'
