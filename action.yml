@@ -1,0 +1,17 @@
+name: 'Next Monotonic Release version'
+description: 'Given a monotonically increasing version returns the next'
+branding:
+  icon: 'arrow-up'
+  color: 'orange'
+inputs:
+  version:
+    description: 'A monotonically increasing release version'
+    required: true
+outputs:
+  version:
+    description: 'Next Version'
+  r_version:
+    description: 'Next Version (prefixed with r)'
+runs:
+  using: 'node12'
+  main: 'main.js'
