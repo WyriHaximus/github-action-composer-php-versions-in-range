@@ -22,4 +22,5 @@ let versions = [];
     }
 });
 
+console.log(`Versions found: ${JSON.stringify(versions)}`);
 console.log(`::set-output name=version::${JSON.stringify(versions)}`);
