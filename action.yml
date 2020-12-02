@@ -1,17 +1,11 @@
-name: 'Next Monotonic Release version'
-description: 'Given a monotonically increasing version returns the next'
+name: 'Composer PHP versions in range'
+description: 'Get '
 branding:
-  icon: 'arrow-up'
-  color: 'orange'
-inputs:
-  version:
-    description: 'A monotonically increasing release version'
-    required: true
+  icon: 'maximize'
+  color: 'green'
 outputs:
   version:
-    description: 'Next Version'
-  r_version:
-    description: 'Next Version (prefixed with r)'
+    description: 'The versions found in range'
 runs:
   using: 'node12'
   main: 'main.js'
