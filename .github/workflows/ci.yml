@@ -1,0 +1,23 @@
+name: Continuous Integration
+on:
+  push:
+    branches:
+      - 'main'
+  pull_request:
+jobs:
+  get-previous-tag:
+    name: Test Composer PHP verions in range Tag on ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
+          - macos-latest
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: 'Composer PHP verions in range'
+        id: versionsinrange
+        uses: ./
+      - run: |
+          echo "${{ steps.versionsinrange.outputs.version }}"
