@@ -3,6 +3,10 @@ description: 'Get PHP versions in range from composer.json'
 branding:
   icon: 'maximize'
   color: 'green'
+inputs:
+  upcomingReleases:
+    description: 'Include upcoming new major or minor releases'
+    required: false
 outputs:
   version:
     description: 'The versions found in range'

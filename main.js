@@ -22,5 +22,15 @@ let versions = [];
     }
 });
 
+if (process.env.INPUT_UPCOMINGRELEASES === 'true') {
+    [
+        '8.1',
+    ].forEach(function (version) {
+        if (semver.satisfies(version + '.0', composerJson['require']['php'])) {
+            versions.push(version);
+        }
+    });
+}
+
 console.log(`Versions found: ${JSON.stringify(versions)}`);
 console.log(`::set-output name=version::${JSON.stringify(versions)}`);
