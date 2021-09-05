@@ -16,6 +16,7 @@ let versions = [];
     '7.3',
     '7.4',
     '8.0',
+    '8.1',
 ].forEach(function (version) {
     if (semver.satisfies(version + '.0', composerJson['require']['php'])) {
         versions.push(version);
@@ -24,7 +25,6 @@ let versions = [];
 
 if (process.env.INPUT_UPCOMINGRELEASES === 'true') {
     [
-        '8.1',
     ].forEach(function (version) {
         if (semver.satisfies(version + '.0', composerJson['require']['php'])) {
             versions.push(version);
