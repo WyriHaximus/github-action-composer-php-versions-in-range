@@ -21,3 +21,10 @@ jobs:
         uses: ./
       - run: |
           echo "${{ steps.versionsinrange.outputs.version }}"
+      - name: 'Composer PHP verions in range including upcoming releases'
+        id: versionsinrangeincludingupcomingreleases
+        uses: ./
+        with:
+          upcomingReleases: true
+      - run: |
+          echo "${{ steps.versionsinrangeincludingupcomingreleases.outputs.version }}"
