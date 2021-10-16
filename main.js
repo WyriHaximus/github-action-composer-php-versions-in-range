@@ -2,6 +2,7 @@ const semver = require('semver');
 const fs = require('fs');
 
 let composerJson = JSON.parse(fs.readFileSync('composer.json'));
+let supportedVersionsRange = composerJson['require']['php'].toString().replace('||', 'PIPEPIPEPLACEHOLDER').replace('|', '||').replace('PIPEPIPEPLACEHOLDER', '||');
 
 let versions = [];
 
@@ -17,7 +18,7 @@ let versions = [];
     '7.4',
     '8.0',
 ].forEach(function (version) {
-    if (semver.satisfies(version + '.0', composerJson['require']['php'])) {
+    if (semver.satisfies(version + '.0', supportedVersionsRange)) {
         versions.push(version);
     }
 });
@@ -26,7 +27,7 @@ if (process.env.INPUT_UPCOMINGRELEASES === 'true') {
     [
         '8.1',
     ].forEach(function (version) {
-        if (semver.satisfies(version + '.0', composerJson['require']['php'])) {
+        if (semver.satisfies(version + '.0', supportedVersionsRange)) {
             versions.push(version);
         }
     });
