@@ -18,12 +18,15 @@ The amount of seconds to wait between checks, adjust depending on the expected t
 
 ## Output
 
-This action has only one output and that's the `version` output. It contains a JSON list with versions to be used in
+This action has 3 outputs the `version` output that contains a JSON list with versions to be used in
 follow up steps:
 
 ```json
 ["7.3","7.4","8.0","8.1","8.2"]
 ```
+
+And the `highest` and `lowest` outputs that provide the highest PHP version (`8.1` in the `version` output example)
+and the lowest PHP version (`7.3` in the `version` output example) from the `version` list.
 
 ## Example
 

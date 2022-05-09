@@ -5,7 +5,7 @@ on:
       - 'main'
   pull_request:
 jobs:
-  get-previous-tag:
+  get-supported-php-versions:
     name: Test Composer PHP verions in range Tag on ${{ matrix.os }}
     strategy:
       matrix:
@@ -13,6 +13,10 @@ jobs:
           - ubuntu-latest
           - windows-latest
           - macos-latest
+    outputs:
+      highest: ${{ steps.versionsinrange.outputs.highest }}
+      lowest: ${{ steps.versionsinrange.outputs.lowest }}
+      version: ${{ steps.versionsinrange.outputs.version }}
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
@@ -28,3 +32,31 @@ jobs:
           upcomingReleases: true
       - run: |
           echo "${{ steps.versionsinrangeincludingupcomingreleases.outputs.version }}"
+  highest:
+    name: The highest detected version is ${{ needs.get-supported-php-versions.outputs.highest }} on ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
+          - macos-latest
+    needs:
+      - get-supported-php-versions
+    runs-on: ${{ matrix.os }}
+    steps:
+      - run: |
+          echo "${{ needs.get-supported-php-versions.outputs.highest }}"
+  lowest:
+    name: The lowest detected version is ${{ needs.get-supported-php-versions.outputs.lowest }} on ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
+          - macos-latest
+    needs:
+      - get-supported-php-versions
+    runs-on: ${{ matrix.os }}
+    steps:
+      - run: |
+          echo "${{ needs.get-supported-php-versions.outputs.lowest }}"
