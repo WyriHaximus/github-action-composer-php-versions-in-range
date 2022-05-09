@@ -26,6 +26,7 @@ let versions = [];
 
 if (process.env.INPUT_UPCOMINGRELEASES === 'true') {
     [
+        '8.2'
     ].forEach(function (version) {
         if (semver.satisfies(version + '.0', supportedVersionsRange)) {
             versions.push(version);
