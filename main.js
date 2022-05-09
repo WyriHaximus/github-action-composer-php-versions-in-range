@@ -34,4 +34,8 @@ if (process.env.INPUT_UPCOMINGRELEASES === 'true') {
 }
 
 console.log(`Versions found: ${JSON.stringify(versions)}`);
+console.log(`Lowest version found: ${versions[0]}`);
+console.log(`Highest version found: ${versions[versions.length - 1]}`);
 console.log(`::set-output name=version::${JSON.stringify(versions)}`);
+console.log(`::set-output name=lowest::${versions[0]}`);
+console.log(`::set-output name=highest::${versions[versions.length - 1]}`);
