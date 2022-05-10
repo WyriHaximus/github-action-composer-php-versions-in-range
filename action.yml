@@ -8,6 +8,10 @@ inputs:
     description: 'Include upcoming new major or minor releases'
     required: false
 outputs:
+  highest:
+    description: 'The highest version found in range'
+  lowest:
+    description: 'The lowest version found in range'
   version:
     description: 'The versions found in range'
 runs:

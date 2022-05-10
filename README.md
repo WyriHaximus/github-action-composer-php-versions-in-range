@@ -2,14 +2,14 @@
 
 GitHub Action that gets the PHP versions in range from composer.json
 
-
 ## Options
 
 This action supports the following option.
 
 ### upcomingReleases
 
-The amount of seconds to wait between checks, adjust depending on the expected time all the checks and related CI's will take.
+Will include the next upcoming major or minor PHP release. For example, if enabled at the time of writing (May 2022) 
+that will be `8.2`.
 
 * *Required*: `No`
 * *Type*: `Boolean`
@@ -18,7 +18,7 @@ The amount of seconds to wait between checks, adjust depending on the expected t
 
 ## Output
 
-This action has 3 outputs the `version` output that contains a JSON list with versions to be used in
+The action comes with 3 outputs, most importantly `version` which contains a JSON list with versions to be used in
 follow up steps:
 
 ```json
@@ -67,7 +67,7 @@ jobs:
           tools: composer
           coverage: none
       - name: Install dependencies
-        run: composer update --prefer-dist --no-interaction --no-progress
+        uses: ramsey/composer-install@v2
       - name: Execute tests
         run: composer test
 ```
