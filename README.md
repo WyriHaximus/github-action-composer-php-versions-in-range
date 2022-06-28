@@ -18,7 +18,7 @@ that will be `8.2`.
 
 ## Output
 
-The action comes with 3 outputs, most importantly `version` which contains a JSON list with versions to be used in
+The action comes with 4 outputs, most importantly `version` which contains a JSON list with versions to be used in
 follow up steps:
 
 ```json
@@ -26,7 +26,8 @@ follow up steps:
 ```
 
 And the `highest` and `lowest` outputs that provide the highest PHP version (`8.1` in the `version` output example)
-and the lowest PHP version (`7.3` in the `version` output example) from the `version` list.
+and the lowest PHP version (`7.3` in the `version` output example) from the `version` list. The 4rth output is 
+`upcoming` and will be populated with the upcoming but unreleased next minor or major version of PHP.
 
 ## Example
 

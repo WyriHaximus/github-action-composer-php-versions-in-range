@@ -5,6 +5,7 @@ let composerJson = JSON.parse(fs.readFileSync('composer.json'));
 let supportedVersionsRange = composerJson['require']['php'].toString().replace('||', 'PIPEPIPEPLACEHOLDER').replace('|', '||').replace('PIPEPIPEPLACEHOLDER', '||');
 
 let versions = [];
+let upcomingVersion = '';
 
 [
     '5.3',
@@ -30,6 +31,7 @@ if (process.env.INPUT_UPCOMINGRELEASES === 'true') {
     ].forEach(function (version) {
         if (semver.satisfies(version + '.0', supportedVersionsRange)) {
             versions.push(version);
+            upcomingVersion = version;
         }
     });
 }
@@ -40,3 +42,4 @@ console.log(`Highest version found: ${versions[versions.length - 1]}`);
 console.log(`::set-output name=version::${JSON.stringify(versions)}`);
 console.log(`::set-output name=lowest::${versions[0]}`);
 console.log(`::set-output name=highest::${versions[versions.length - 1]}`);
+console.log(`::set-output name=upcoming::${upcomingVersion}`);
