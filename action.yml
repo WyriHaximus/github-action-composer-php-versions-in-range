@@ -16,6 +16,12 @@ outputs:
     description: 'The versions found in range'
   upcoming:
     description: 'The upcoming version found in range'
+  extensions:
+    description: 'The PHP extensions found in require and require-dev'
+  requiredExtensions:
+    description: 'The PHP extensions found in require only'
+  requiredDevExtensions:
+    description: 'The PHP extensions found in require-dev only'
 runs:
   using: 'node12'
   main: 'main.js'
