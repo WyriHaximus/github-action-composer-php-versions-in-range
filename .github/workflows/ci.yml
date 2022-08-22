@@ -17,15 +17,18 @@ jobs:
       highest: ${{ steps.versionsinrange.outputs.highest }}
       lowest: ${{ steps.versionsinrange.outputs.lowest }}
       version: ${{ steps.versionsinrange.outputs.version }}
+      extensions: ${{ steps.versionsinrange.outputs.extensions }}
+      requiredExtensions: ${{ steps.versionsinrange.outputs.requiredExtensions }}
+      requiredDevExtensions: ${{ steps.versionsinrange.outputs.requiredDevExtensions }}
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v2
-      - name: 'Composer PHP verions in range'
+      - name: 'Composer PHP versions in range'
         id: versionsinrange
         uses: ./
       - run: |
           echo "${{ steps.versionsinrange.outputs.version }}"
-      - name: 'Composer PHP verions in range including upcoming releases'
+      - name: 'Composer PHP versions in range including upcoming releases'
         id: versionsinrangeincludingupcomingreleases
         uses: ./
         with:
@@ -60,3 +63,19 @@ jobs:
     steps:
       - run: |
           echo "${{ needs.get-supported-php-versions.outputs.lowest }}"
+  extensions:
+    name: Detected extensions on ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
+          - macos-latest
+    needs:
+      - get-supported-php-versions
+    runs-on: ${{ matrix.os }}
+    steps:
+      - run: |
+          echo "All require extensions: ${{ needs.get-supported-php-versions.outputs.extensions }}"
+          echo "Require extensions: ${{ needs.get-supported-php-versions.outputs.requiredExtensions }}"
+          echo "Dev require extensions: ${{ needs.get-supported-php-versions.outputs.requiredDevExtensions }}"

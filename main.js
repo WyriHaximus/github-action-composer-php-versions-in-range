@@ -66,9 +66,9 @@ let requiredExtensions = getExtensionsFrom('require', composerJson);
 let requiredDevExtensions = getExtensionsFrom('require-dev', composerJson);
 let allExtensions = [...requiredExtensions, ...requiredDevExtensions];
 
+console.log(`All required extensions: ${JSON.stringify(allExtensions)}`);
 console.log(`Required extensions: ${JSON.stringify(requiredExtensions)}`);
 console.log(`Required dev extensions: ${JSON.stringify(requiredDevExtensions)}`);
-console.log(`All extensions: ${JSON.stringify(allExtensions)}`);
 console.log(`::set-output name=extensions::${JSON.stringify(allExtensions)}`);
 console.log(`::set-output name=requiredExtensions::${JSON.stringify(requiredExtensions)}`);
 console.log(`::set-output name=requiredDevExtensions::${JSON.stringify(requiredDevExtensions)}`);
