@@ -43,3 +43,32 @@ console.log(`::set-output name=version::${JSON.stringify(versions)}`);
 console.log(`::set-output name=lowest::${versions[0]}`);
 console.log(`::set-output name=highest::${versions[versions.length - 1]}`);
 console.log(`::set-output name=upcoming::${upcomingVersion}`);
+
+// Extensions handling
+function getExtensionsFrom(section, composer) {
+    if (!composer.hasOwnProperty(section)) {
+        return [];
+    }
+
+    return Object.entries(composer[section])
+        .map(function (dependency) {
+            return dependency[0];
+        })
+        .filter(function(dependency) {
+            return dependency.toString().startsWith("ext-");
+        })
+        .map(function (dependency) {
+            return dependency.toString().substring(4);
+        });
+}
+
+let requiredExtensions = getExtensionsFrom('require', composerJson);
+let requiredDevExtensions = getExtensionsFrom('require-dev', composerJson);
+let allExtensions = [...requiredExtensions, ...requiredDevExtensions];
+
+console.log(`All required extensions: ${JSON.stringify(allExtensions)}`);
+console.log(`Required extensions: ${JSON.stringify(requiredExtensions)}`);
+console.log(`Required dev extensions: ${JSON.stringify(requiredDevExtensions)}`);
+console.log(`::set-output name=extensions::${JSON.stringify(allExtensions)}`);
+console.log(`::set-output name=requiredExtensions::${JSON.stringify(requiredExtensions)}`);
+console.log(`::set-output name=requiredDevExtensions::${JSON.stringify(requiredDevExtensions)}`);
