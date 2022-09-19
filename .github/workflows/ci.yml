@@ -79,3 +79,9 @@ jobs:
           echo "All require extensions: ${{ needs.get-supported-php-versions.outputs.extensions }}"
           echo "Require extensions: ${{ needs.get-supported-php-versions.outputs.requiredExtensions }}"
           echo "Dev require extensions: ${{ needs.get-supported-php-versions.outputs.requiredDevExtensions }}"
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ needs.get-supported-php-versions.outputs.highest }}
+          tools: composer
+          coverage: none
+          extensions: ${{ join(fromJson(needs.get-supported-php-versions.outputs.extensions), ',') }}
