@@ -48,6 +48,7 @@ jobs:
     name: Supported Versions Matrix
     runs-on: ubuntu-latest
     outputs:
+      extensions: ${{ steps.supported-versions-matrix.outputs.extensions }}
       version: ${{ steps.supported-versions-matrix.outputs.version }}
     steps:
       - uses: actions/checkout@v3
