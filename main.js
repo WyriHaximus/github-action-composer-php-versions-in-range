@@ -19,6 +19,7 @@ let upcomingVersion = '';
     '7.4',
     '8.0',
     '8.1',
+    '8.2',
 ].forEach(function (version) {
     if (semver.satisfies(version + '.0', supportedVersionsRange)) {
         versions.push(version);
@@ -27,7 +28,7 @@ let upcomingVersion = '';
 
 if (process.env.INPUT_UPCOMINGRELEASES === 'true') {
     [
-        '8.2'
+        //'8.3'
     ].forEach(function (version) {
         if (semver.satisfies(version + '.0', supportedVersionsRange)) {
             versions.push(version);
