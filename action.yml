@@ -23,5 +23,5 @@ outputs:
   requiredDevExtensions:
     description: 'The PHP extensions found in require-dev only'
 runs:
-  using: 'node12'
+  using: 'node16'
   main: 'main.js'
