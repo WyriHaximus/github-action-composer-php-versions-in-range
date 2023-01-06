@@ -40,10 +40,11 @@ if (process.env.INPUT_UPCOMINGRELEASES === 'true') {
 console.log(`Versions found: ${JSON.stringify(versions)}`);
 console.log(`Lowest version found: ${versions[0]}`);
 console.log(`Highest version found: ${versions[versions.length - 1]}`);
-console.log(`::set-output name=version::${JSON.stringify(versions)}`);
-console.log(`::set-output name=lowest::${versions[0]}`);
-console.log(`::set-output name=highest::${versions[versions.length - 1]}`);
-console.log(`::set-output name=upcoming::${upcomingVersion}`);
+
+fs.appendFileSync(process.env.GITHUB_OUTPUT, `version=${JSON.stringify(versions)}\n`);
+fs.appendFileSync(process.env.GITHUB_OUTPUT, `lowest=${versions[0]}\n`);
+fs.appendFileSync(process.env.GITHUB_OUTPUT, `highest=${versions[versions.length - 1]}\n`);
+fs.appendFileSync(process.env.GITHUB_OUTPUT, `upcoming=${upcomingVersion}\n`);
 
 // Extensions handling
 function getExtensionsFrom(section, composer) {
@@ -70,6 +71,7 @@ let allExtensions = [...requiredExtensions, ...requiredDevExtensions];
 console.log(`All required extensions: ${JSON.stringify(allExtensions)}`);
 console.log(`Required extensions: ${JSON.stringify(requiredExtensions)}`);
 console.log(`Required dev extensions: ${JSON.stringify(requiredDevExtensions)}`);
-console.log(`::set-output name=extensions::${JSON.stringify(allExtensions)}`);
-console.log(`::set-output name=requiredExtensions::${JSON.stringify(requiredExtensions)}`);
-console.log(`::set-output name=requiredDevExtensions::${JSON.stringify(requiredDevExtensions)}`);
+
+fs.appendFileSync(process.env.GITHUB_OUTPUT, `extensions=${JSON.stringify(allExtensions)}\n`);
+fs.appendFileSync(process.env.GITHUB_OUTPUT, `requiredExtensions=${JSON.stringify(requiredExtensions)}\n`);
+fs.appendFileSync(process.env.GITHUB_OUTPUT, `requiredDevExtensions=${JSON.stringify(requiredDevExtensions)}\n`);
