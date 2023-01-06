@@ -14,6 +14,7 @@ jobs:
           - windows-latest
           - macos-latest
     outputs:
+      highestUpcoming: ${{ steps.versionsinrangeincludingupcomingreleases.outputs.highest }}
       highest: ${{ steps.versionsinrange.outputs.highest }}
       lowest: ${{ steps.versionsinrange.outputs.lowest }}
       version: ${{ steps.versionsinrange.outputs.version }}
@@ -49,6 +50,18 @@ jobs:
     steps:
       - run: |
           echo "${{ needs.get-supported-php-versions.outputs.highest }}"
+      - name: "Assert Output: highest"
+        uses: therussiankid92/gat@v1
+        with:
+          assertion: should.equal
+          expected: 8.2
+          actual: ${{ needs.get-supported-php-versions.outputs.highest }}
+      - name: "Assert Output: highest (upcoming releases)"
+        uses: therussiankid92/gat@v1
+        with:
+          assertion: should.equal
+          expected: 8.2
+          actual: ${{ needs.get-supported-php-versions.outputs.highestUpcoming }}
   lowest:
     name: The lowest detected version is ${{ needs.get-supported-php-versions.outputs.lowest }} on ${{ matrix.os }}
     strategy:
@@ -63,6 +76,12 @@ jobs:
     steps:
       - run: |
           echo "${{ needs.get-supported-php-versions.outputs.lowest }}"
+      - name: "Assert Output: lowest"
+        uses: therussiankid92/gat@v1
+        with:
+          assertion: should.equal
+          expected: 7.3
+          actual: ${{ needs.get-supported-php-versions.outputs.lowest }}
   extensions:
     name: Detected extensions on ${{ matrix.os }}
     strategy:
@@ -85,3 +104,21 @@ jobs:
           tools: composer
           coverage: none
           extensions: ${{ join(fromJson(needs.get-supported-php-versions.outputs.extensions), ',') }}
+      - name: "Assert Output: extensions"
+        uses: therussiankid92/gat@v1
+        with:
+          assertion: should.equal
+          expected: ast,pcov,xdebug
+          actual: ${{ join(fromJson(needs.get-supported-php-versions.outputs.extensions), ',') }}
+      - name: "Assert Output: requiredExtensions"
+        uses: therussiankid92/gat@v1
+        with:
+          assertion: should.equal
+          expected: ast
+          actual: ${{ join(fromJson(needs.get-supported-php-versions.outputs.requiredExtensions), ',') }}
+      - name: "Assert Output: requiredDevExtensions"
+        uses: therussiankid92/gat@v1
+        with:
+          assertion: should.equal
+          expected: pcov,xdebug
+          actual: ${{ join(fromJson(needs.get-supported-php-versions.outputs.requiredDevExtensions), ',') }}
