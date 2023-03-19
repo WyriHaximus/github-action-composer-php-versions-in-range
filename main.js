@@ -2,7 +2,7 @@ const semver = require('semver');
 const fs = require('fs');
 
 let composerJson = JSON.parse(fs.readFileSync('composer.json'));
-let supportedVersionsRange = composerJson['require']['php'].toString().replace('||', 'PIPEPIPEPLACEHOLDER').replace('|', '||').replace('PIPEPIPEPLACEHOLDER', '||');
+let supportedVersionsRange = composerJson['require']['php'].toString().replaceAll('||', 'PIPEPIPEPLACEHOLDER').replaceAll('|', '||').replaceAll('PIPEPIPEPLACEHOLDER', '||');
 
 let versions = [];
 let upcomingVersion = '';
