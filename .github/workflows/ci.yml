@@ -60,7 +60,7 @@ jobs:
         uses: therussiankid92/gat@v1
         with:
           assertion: should.equal
-          expected: 8.2
+          expected: 8.3
           actual: ${{ needs.get-supported-php-versions.outputs.highestUpcoming }}
   lowest:
     name: The lowest detected version is ${{ needs.get-supported-php-versions.outputs.lowest }} on ${{ matrix.os }}
