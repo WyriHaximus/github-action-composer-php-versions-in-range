@@ -6,8 +6,6 @@ const composerJsonPath = (
     ) : ''
 ) + 'composer.json';
 
-console.log(composerJsonPath);
-
 let composerJson = JSON.parse(fs.readFileSync(composerJsonPath));
 let supportedVersionsRange = composerJson['require']['php'].toString().replaceAll('||', 'PIPEPIPEPLACEHOLDER').replaceAll('|', '||').replaceAll('PIPEPIPEPLACEHOLDER', '||');
 
