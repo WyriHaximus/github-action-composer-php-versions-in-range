@@ -16,6 +16,15 @@ that will be `8.2`.
 * *Default*: `false`
 * *Example*: `true` for including upcoming new major or minor releases
 
+### workingDirectory
+
+Set a different than the root directory to look for `composer.json`
+
+* *Required*: `No`
+* *Type*: `String`
+* *Default*: `""`
+* *Example*: `clients/GitHub`
+
 ## Output
 
 The action comes with 7 outputs, most importantly `version` which contains a JSON list with versions to be used in

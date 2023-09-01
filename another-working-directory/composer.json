@@ -1,0 +1,10 @@
+{
+  "require": {
+    "php": "^5",
+    "ext-ast": "*"
+  },
+  "require-dev": {
+    "ext-pcov": "*",
+    "ext-xdebug": "*"
+  }
+}

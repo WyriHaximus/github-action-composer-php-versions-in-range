@@ -7,6 +7,10 @@ inputs:
   upcomingReleases:
     description: 'Include upcoming new major or minor releases'
     required: false
+  workingDirectory:
+    description: The directory to run this action in
+    default: ""
+    required: false
 outputs:
   highest:
     description: 'The highest version found in range'

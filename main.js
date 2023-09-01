@@ -1,7 +1,14 @@
 const semver = require('semver');
 const fs = require('fs');
+const composerJsonPath = (
+    process.env.INPUT_WORKINGDIRECTORY.toString().length > 0 ?  (
+        (process.env.INPUT_WORKINGDIRECTORY.endsWith('/')  ? process.env.INPUT_WORKINGDIRECTORY.slice(0, -1) : process.env.INPUT_WORKINGDIRECTORY) + '/'
+    ) : ''
+) + 'composer.json';
 
-let composerJson = JSON.parse(fs.readFileSync('composer.json'));
+console.log(composerJsonPath);
+
+let composerJson = JSON.parse(fs.readFileSync(composerJsonPath));
 let supportedVersionsRange = composerJson['require']['php'].toString().replaceAll('||', 'PIPEPIPEPLACEHOLDER').replaceAll('|', '||').replaceAll('PIPEPIPEPLACEHOLDER', '||');
 
 let versions = [];
