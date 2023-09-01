@@ -6,18 +6,47 @@ on:
   pull_request:
 jobs:
   get-supported-php-versions:
-    name: Test Composer PHP verions in range Tag on ${{ matrix.os }}
+    name: Test Composer PHP versions in range Tag on ${{ matrix.os }} in ${{ matrix.workingDirectory }}
     strategy:
+      fail-fast: false
       matrix:
+        include:
+          - workingDirectory: "another-working-directory/"
+            highestUpcoming: "5.6"
+            highest: "5.6"
+            lowest: "5.3"
+            extensions: "ast,pcov,xdebug"
+            requiredExtensions: "ast"
+            requiredDevExtensions: "pcov,xdebug"
+            os: ubuntu-latest
+          - workingDirectory: "another-working-directory"
+            highestUpcoming: "5.6"
+            highest: "5.6"
+            lowest: "5.3"
+            extensions: "ast,pcov,xdebug"
+            requiredExtensions: "ast"
+            requiredDevExtensions: "pcov,xdebug"
+            os: ubuntu-latest
         os:
           - ubuntu-latest
           - windows-latest
           - macos-latest
+        workingDirectory:
+          - ""
+        highestUpcoming:
+          - "8.3"
+        highest:
+          - "8.2"
+        lowest:
+          - "7.3"
+        extensions:
+          - "ast,pcov,xdebug"
+        requiredExtensions:
+          - "ast"
+        requiredDevExtensions:
+          - "pcov,xdebug"
     outputs:
-      highestUpcoming: ${{ steps.versionsinrangeincludingupcomingreleases.outputs.highest }}
       highest: ${{ steps.versionsinrange.outputs.highest }}
-      lowest: ${{ steps.versionsinrange.outputs.lowest }}
-      version: ${{ steps.versionsinrange.outputs.version }}
       extensions: ${{ steps.versionsinrange.outputs.extensions }}
       requiredExtensions: ${{ steps.versionsinrange.outputs.requiredExtensions }}
       requiredDevExtensions: ${{ steps.versionsinrange.outputs.requiredDevExtensions }}
@@ -27,6 +56,8 @@ jobs:
       - name: 'Composer PHP versions in range'
         id: versionsinrange
         uses: ./
+        with:
+          workingDirectory: ${{ matrix.workingDirectory }}
       - run: |
           echo "${{ steps.versionsinrange.outputs.version }}"
       - name: 'Composer PHP versions in range including upcoming releases'
@@ -34,54 +65,45 @@ jobs:
         uses: ./
         with:
           upcomingReleases: true
+          workingDirectory: ${{ matrix.workingDirectory }}
       - run: |
           echo "${{ steps.versionsinrangeincludingupcomingreleases.outputs.version }}"
-  highest:
-    name: The highest detected version is ${{ needs.get-supported-php-versions.outputs.highest }} on ${{ matrix.os }}
-    strategy:
-      matrix:
-        os:
-          - ubuntu-latest
-          - windows-latest
-          - macos-latest
-    needs:
-      - get-supported-php-versions
-    runs-on: ${{ matrix.os }}
-    steps:
-      - run: |
-          echo "${{ needs.get-supported-php-versions.outputs.highest }}"
-      - name: "Assert Output: highest"
-        uses: therussiankid92/gat@v1
-        with:
-          assertion: should.equal
-          expected: 8.2
-          actual: ${{ needs.get-supported-php-versions.outputs.highest }}
-      - name: "Assert Output: highest (upcoming releases)"
-        uses: therussiankid92/gat@v1
-        with:
-          assertion: should.equal
-          expected: 8.3
-          actual: ${{ needs.get-supported-php-versions.outputs.highestUpcoming }}
-  lowest:
-    name: The lowest detected version is ${{ needs.get-supported-php-versions.outputs.lowest }} on ${{ matrix.os }}
-    strategy:
-      matrix:
-        os:
-          - ubuntu-latest
-          - windows-latest
-          - macos-latest
-    needs:
-      - get-supported-php-versions
-    runs-on: ${{ matrix.os }}
-    steps:
-      - run: |
-          echo "${{ needs.get-supported-php-versions.outputs.lowest }}"
       - name: "Assert Output: lowest"
         uses: therussiankid92/gat@v1
         with:
           assertion: should.equal
-          expected: 7.3
-          actual: ${{ needs.get-supported-php-versions.outputs.lowest }}
+          expected: ${{ matrix.lowest }}
+          actual: ${{ steps.versionsinrange.outputs.lowest }}
+      - name: "Assert Output: highest"
+        uses: therussiankid92/gat@v1
+        with:
+          assertion: should.equal
+          expected: ${{ matrix.highest }}
+          actual: ${{ steps.versionsinrange.outputs.highest }}
+      - name: "Assert Output: highest (upcoming releases)"
+        uses: therussiankid92/gat@v1
+        with:
+          assertion: should.equal
+          expected: ${{ matrix.highestUpcoming }}
+          actual: ${{ steps.versionsinrangeincludingupcomingreleases.outputs.highest }}
+      - name: "Assert Output: extensions"
+        uses: therussiankid92/gat@v1
+        with:
+          assertion: should.equal
+          expected: ${{ matrix.extensions }}
+          actual: ${{ join(fromJson(steps.versionsinrange.outputs.extensions), ',') }}
+      - name: "Assert Output: requiredExtensions"
+        uses: therussiankid92/gat@v1
+        with:
+          assertion: should.equal
+          expected: ${{ matrix.requiredExtensions }}
+          actual: ${{ join(fromJson(steps.versionsinrange.outputs.requiredExtensions), ',') }}
+      - name: "Assert Output: requiredDevExtensions"
+        uses: therussiankid92/gat@v1
+        with:
+          assertion: should.equal
+          expected: ${{ matrix.requiredDevExtensions }}
+          actual: ${{ join(fromJson(steps.versionsinrange.outputs.requiredDevExtensions), ',') }}
   extensions:
     name: Detected extensions on ${{ matrix.os }}
     strategy:
@@ -104,21 +126,3 @@ jobs:
           tools: composer
           coverage: none
           extensions: ${{ join(fromJson(needs.get-supported-php-versions.outputs.extensions), ',') }}
-      - name: "Assert Output: extensions"
-        uses: therussiankid92/gat@v1
-        with:
-          assertion: should.equal
-          expected: ast,pcov,xdebug
-          actual: ${{ join(fromJson(needs.get-supported-php-versions.outputs.extensions), ',') }}
-      - name: "Assert Output: requiredExtensions"
-        uses: therussiankid92/gat@v1
-        with:
-          assertion: should.equal
-          expected: ast
-          actual: ${{ join(fromJson(needs.get-supported-php-versions.outputs.requiredExtensions), ',') }}
-      - name: "Assert Output: requiredDevExtensions"
-        uses: therussiankid92/gat@v1
-        with:
-          assertion: should.equal
-          expected: pcov,xdebug
-          actual: ${{ join(fromJson(needs.get-supported-php-versions.outputs.requiredDevExtensions), ',') }}
