@@ -5,8 +5,18 @@ const composerJsonPath = (
         (process.env.INPUT_WORKINGDIRECTORY.endsWith('/')  ? process.env.INPUT_WORKINGDIRECTORY.slice(0, -1) : process.env.INPUT_WORKINGDIRECTORY) + '/'
     ) : ''
 ) + 'composer.json';
+const composerLockPath = (
+    process.env.INPUT_WORKINGDIRECTORY.toString().length > 0 ?  (
+        (process.env.INPUT_WORKINGDIRECTORY.endsWith('/')  ? process.env.INPUT_WORKINGDIRECTORY.slice(0, -1) : process.env.INPUT_WORKINGDIRECTORY) + '/'
+    ) : ''
+) + 'composer.lock';
 
 let composerJson = JSON.parse(fs.readFileSync(composerJsonPath));
+let composerLockExists = fs.existsSync(composerLockPath);
+let composerLock = {};
+if (composerLockExists) {
+    composerLock = JSON.parse(fs.readFileSync(composerLockPath));
+}
 let supportedVersionsRange = composerJson['require']['php'].toString().replaceAll('||', 'PIPEPIPEPLACEHOLDER').replaceAll('|', '||').replaceAll('PIPEPIPEPLACEHOLDER', '||');
 
 let versions = [];
@@ -69,7 +79,7 @@ fs.appendFileSync(process.env.GITHUB_OUTPUT, `upcoming=${upcomingVersion}\n`);
 fs.appendFileSync(process.env.GITHUB_OUTPUT, `nightly=${nightlyVersion}\n`);
 
 // Extensions handling
-function getExtensionsFrom(section, composer) {
+function getExtensionsFromJason(section, composer) {
     if (!composer.hasOwnProperty(section)) {
         return [];
     }
@@ -85,9 +95,35 @@ function getExtensionsFrom(section, composer) {
             return dependency.toString().substring(4);
         });
 }
+function getExtensionsFromLock(section, composer) {
+    if (!composer.hasOwnProperty('packages' + section)) {
+        return [];
+    }
 
-let requiredExtensions = getExtensionsFrom('require', composerJson);
-let requiredDevExtensions = getExtensionsFrom('require-dev', composerJson);
+    return composer['packages' + section]
+        .flatMap(function (packageObject) {
+            return getExtensionsFromJason('require' + section, packageObject);
+        });
+}
+
+let requiredExtensions = getExtensionsFromJason('require', composerJson);
+if (composerLockExists) {
+    requiredExtensions = requiredExtensions.concat(
+        getExtensionsFromLock('', composerLock)
+    ).filter(
+        (value, index, array) => array.indexOf(value) === index
+    );
+}
+
+let requiredDevExtensions = getExtensionsFromJason('require-dev', composerJson);
+if (composerLockExists) {
+    requiredDevExtensions = requiredDevExtensions.concat(
+        getExtensionsFromLock('-dev', composerLock)
+    ).filter(
+        (value, index, array) =>  array.indexOf(value) === index
+    );
+}
+
 let allExtensions = [...requiredExtensions, ...requiredDevExtensions];
 
 console.log(`All required extensions: ${JSON.stringify(allExtensions)}`);
