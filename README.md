@@ -59,6 +59,7 @@ jobs:
     outputs:
       extensions: ${{ steps.supported-versions-matrix.outputs.extensions }}
       version: ${{ steps.supported-versions-matrix.outputs.version }}
+      upcoming: ${{ steps.supported-versions-matrix.outputs.upcoming }}
     steps:
       - uses: actions/checkout@v3
       - id: supported-versions-matrix
@@ -84,12 +85,16 @@ jobs:
       - name: Install dependencies
         uses: ramsey/composer-install@v2
       - name: Execute tests
+        if: needs.supported-versions-matrix.outputs.upcoming != matrix.php
         run: composer test
+      - name: Execute tests
+        if: needs.supported-versions-matrix.outputs.upcoming == matrix.php
+        run: composer test || true # Crude but effective, assumes that anything running in there is checked by hand or sets annotations
 ```
 
 ## License ##
 
-Copyright 2022 [Cees-Jan Kiewiet](http://wyrihaximus.net/)
+Copyright 2023 [Cees-Jan Kiewiet](http://wyrihaximus.net/)
 
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation
