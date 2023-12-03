@@ -9,12 +9,23 @@ This action supports the following option.
 ### upcomingReleases
 
 Will include the next upcoming major or minor PHP release. For example, if enabled at the time of writing (May 2022) 
-that will be `8.2`.
+that will be `8.2`. Note that this version will be updated once the first alpha is out. Looking for more bleeding 
+edge, `nightly` will hold the same value from the release day of the previous `X.Y.0` release.
 
 * *Required*: `No`
 * *Type*: `Boolean`
 * *Default*: `false`
 * *Example*: `true` for including upcoming new major or minor releases
+
+### nightly
+
+Will include the nightly of the next new major or minor PHP release. For example, if enabled at the time of writing (December 2023) 
+that will be `8.4`.
+
+* *Required*: `No`
+* *Type*: `Boolean`
+* *Default*: `false`
+* *Example*: `true` for including the nightly of the next new major or minor releases
 
 ### workingDirectory
 
@@ -36,7 +47,8 @@ follow up steps:
 
 And the `highest` and `lowest` outputs that provide the highest PHP version (`8.3` in the `version` output example)
 and the lowest PHP version (`7.3` in the `version` output example) from the `version` list. The 4rth output is 
-`upcoming` and will be populated with the upcoming but unreleased next minor or major version of PHP.
+`upcoming` and will be populated with the upcoming but in alpha/beta/rc next minor or major version of PHP. The 
+`nightly` contains the currently in development byt not alpha/beta/rc tag next major or minor version. 
 
 On top of that this action will also give you 3 lists of extensions. The extensions from `require` in 
 `requiredExtensions`, dev extensions in `requiredDevExtensions`, and a combined list in `extensions`.
@@ -89,7 +101,7 @@ jobs:
 
 ## License ##
 
-Copyright 2022 [Cees-Jan Kiewiet](http://wyrihaximus.net/)
+Copyright 2024 [Cees-Jan Kiewiet](http://wyrihaximus.net/)
 
 Permission is hereby granted, free of charge, to any person
 obtaining a copy of this software and associated documentation

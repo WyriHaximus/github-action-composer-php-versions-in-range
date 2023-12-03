@@ -11,6 +11,7 @@ let supportedVersionsRange = composerJson['require']['php'].toString().replaceAl
 
 let versions = [];
 let upcomingVersion = '';
+let nightlyVersion = '';
 
 [
     '5.3',
@@ -42,6 +43,21 @@ if (process.env.INPUT_UPCOMINGRELEASES === 'true') {
     });
 }
 
+if (process.env.INPUT_NIGHTLY === 'true') {
+    [
+        '8.4',
+    ].forEach(function (version) {
+        if (semver.satisfies(version + '.0', supportedVersionsRange)) {
+            versions.push(version);
+            nightlyVersion = version;
+        }
+    });
+}
+
+versions = versions.filter(
+    (value, index, array) =>  array.indexOf(value) === index
+);
+
 console.log(`Versions found: ${JSON.stringify(versions)}`);
 console.log(`Lowest version found: ${versions[0]}`);
 console.log(`Highest version found: ${versions[versions.length - 1]}`);
@@ -50,6 +66,7 @@ fs.appendFileSync(process.env.GITHUB_OUTPUT, `version=${JSON.stringify(versions)
 fs.appendFileSync(process.env.GITHUB_OUTPUT, `lowest=${versions[0]}\n`);
 fs.appendFileSync(process.env.GITHUB_OUTPUT, `highest=${versions[versions.length - 1]}\n`);
 fs.appendFileSync(process.env.GITHUB_OUTPUT, `upcoming=${upcomingVersion}\n`);
+fs.appendFileSync(process.env.GITHUB_OUTPUT, `nightly=${nightlyVersion}\n`);
 
 // Extensions handling
 function getExtensionsFrom(section, composer) {
