@@ -31,10 +31,10 @@ The action comes with 7 outputs, most importantly `version` which contains a JSO
 follow up steps:
 
 ```json
-["7.3","7.4","8.0","8.1","8.2"]
+["7.3","7.4","8.0","8.1","8.2","8.3"]
 ```
 
-And the `highest` and `lowest` outputs that provide the highest PHP version (`8.1` in the `version` output example)
+And the `highest` and `lowest` outputs that provide the highest PHP version (`8.3` in the `version` output example)
 and the lowest PHP version (`7.3` in the `version` output example) from the `version` list. The 4rth output is 
 `upcoming` and will be populated with the upcoming but unreleased next minor or major version of PHP.
 
