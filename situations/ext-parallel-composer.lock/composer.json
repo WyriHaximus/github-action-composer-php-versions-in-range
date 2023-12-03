@@ -1,0 +1,10 @@
+{
+  "require": {
+    "php": "^8.2",
+    "react-parallel/react-parallel": "^1"
+  },
+  "require-dev": {
+    "ext-pcov": "*",
+    "ext-xdebug": "*"
+  }
+}
