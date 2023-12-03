@@ -13,6 +13,7 @@ jobs:
         include:
           - workingDirectory: "another-working-directory/"
             highestUpcoming: "5.6"
+            nightly: "5.6"
             highest: "5.6"
             lowest: "5.3"
             extensions: "ast,pcov,xdebug"
@@ -21,6 +22,7 @@ jobs:
             os: ubuntu-latest
           - workingDirectory: "another-working-directory"
             highestUpcoming: "5.6"
+            nightly: "5.6"
             highest: "5.6"
             lowest: "5.3"
             extensions: "ast,pcov,xdebug"
@@ -35,6 +37,8 @@ jobs:
           - ""
         highestUpcoming:
           - "8.3"
+        nightly:
+          - "8.4"
         highest:
           - "8.3"
         lowest:
@@ -67,7 +71,24 @@ jobs:
           upcomingReleases: true
           workingDirectory: ${{ matrix.workingDirectory }}
       - run: |
-          echo "${{ steps.versionsinrangeincludingupcomingreleases.outputs.version }}"
+          echo "${{ steps.versionsinrange.outputs.version }}"
+      - name: 'Composer PHP versions in range including nightly'
+        id: versionsinrangeincludingnightly
+        uses: ./
+        with:
+          nightly: true
+          workingDirectory: ${{ matrix.workingDirectory }}
+      - run: |
+          echo "${{ steps.versionsinrangeincludingnightly.outputs.version }}"
+      - name: 'Composer PHP versions in range including nightly and  upcoming releases'
+        id: versionsinrangeincludingnightlyandupcomingreleases
+        uses: ./
+        with:
+          upcomingReleases: true
+          nightly: true
+          workingDirectory: ${{ matrix.workingDirectory }}
+      - run: |
+          echo "${{ steps.versionsinrangeincludingnightlyandupcomingreleases.outputs.version }}"
       - name: "Assert Output: lowest"
         uses: therussiankid92/gat@v1
         with:
@@ -86,6 +107,12 @@ jobs:
           assertion: should.equal
           expected: ${{ matrix.highestUpcoming }}
           actual: ${{ steps.versionsinrangeincludingupcomingreleases.outputs.highest }}
+      - name: "Assert Output: highest (nightly)"
+        uses: therussiankid92/gat@v1
+        with:
+          assertion: should.equal
+          expected: ${{ matrix.nightly }}
+          actual: ${{ steps.versionsinrangeincludingnightly.outputs.highest }}
       - name: "Assert Output: extensions"
         uses: therussiankid92/gat@v1
         with:

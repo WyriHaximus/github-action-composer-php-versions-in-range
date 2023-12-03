@@ -7,6 +7,9 @@ inputs:
   upcomingReleases:
     description: 'Include upcoming new major or minor releases'
     required: false
+  nightly:
+    description: 'Include nightly of the next new major or minor releases'
+    required: false
   workingDirectory:
     description: The directory to run this action in
     default: ""
@@ -19,7 +22,9 @@ outputs:
   version:
     description: 'The versions found in range'
   upcoming:
-    description: 'The upcoming version found in range'
+    description: 'The upcoming version found in range, if any'
+  nightly:
+    description: 'The nightly version found in range, if any'
   extensions:
     description: 'The PHP extensions found in require and require-dev'
   requiredExtensions:
