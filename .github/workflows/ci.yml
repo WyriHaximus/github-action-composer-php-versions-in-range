@@ -34,7 +34,7 @@ jobs:
         workingDirectory:
           - ""
         highestUpcoming:
-          - "8.4"
+          - "8.3"
         highest:
           - "8.3"
         lowest:
