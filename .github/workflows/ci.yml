@@ -36,7 +36,7 @@ jobs:
         highestUpcoming:
           - "8.3"
         highest:
-          - "8.2"
+          - "8.3"
         lowest:
           - "7.3"
         extensions:
