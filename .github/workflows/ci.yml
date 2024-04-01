@@ -47,6 +47,15 @@ jobs:
             requiredExtensions: "bcmath,ctype,dom,filter,intl,json,libxml,mbstring,openssl,pcre,phar,reflection,simplexml,sodium,spl,tokenizer,xml,xmlwriter"
             requiredDevExtensions: "pcov,xdebug"
             os: ubuntu-latest
+          - workingDirectory: "situations/wyrihaximus-react-phpunit-run-tests-in-fiber-composer.lock/"
+            highestUpcoming: "8.3"
+            nightly: "8.4"
+            highest: "8.3"
+            lowest: "8.2"
+            extensions: "bcmath,ctype,dom,filter,intl,json,libxml,mbstring,openssl,pcre,phar,reflection,simplexml,sodium,spl,tokenizer,xml,xmlwriter"
+            requiredExtensions: ""
+            requiredDevExtensions: "bcmath,ctype,dom,filter,intl,json,libxml,mbstring,openssl,pcre,phar,reflection,simplexml,sodium,spl,tokenizer,xml,xmlwriter"
+            os: ubuntu-latest
         os:
           - ubuntu-latest
           - windows-latest
@@ -108,45 +117,38 @@ jobs:
       - run: |
           echo "${{ steps.versionsinrangeincludingnightlyandupcomingreleases.outputs.version }}"
       - name: "Assert Output: lowest"
-        uses: therussiankid92/gat@v1
+        uses: nick-fields/assert-action@v1
         with:
-          assertion: should.equal
           expected: ${{ matrix.lowest }}
           actual: ${{ steps.versionsinrange.outputs.lowest }}
       - name: "Assert Output: highest"
-        uses: therussiankid92/gat@v1
+        uses: nick-fields/assert-action@v1
         with:
-          assertion: should.equal
           expected: ${{ matrix.highest }}
           actual: ${{ steps.versionsinrange.outputs.highest }}
       - name: "Assert Output: highest (upcoming releases)"
-        uses: therussiankid92/gat@v1
+        uses: nick-fields/assert-action@v1
         with:
-          assertion: should.equal
           expected: ${{ matrix.highestUpcoming }}
           actual: ${{ steps.versionsinrangeincludingupcomingreleases.outputs.highest }}
       - name: "Assert Output: highest (nightly)"
-        uses: therussiankid92/gat@v1
+        uses: nick-fields/assert-action@v1
         with:
-          assertion: should.equal
           expected: ${{ matrix.nightly }}
           actual: ${{ steps.versionsinrangeincludingnightly.outputs.highest }}
       - name: "Assert Output: extensions"
-        uses: therussiankid92/gat@v1
+        uses: nick-fields/assert-action@v1
         with:
-          assertion: should.equal
           expected: ${{ matrix.extensions }}
           actual: ${{ join(fromJson(steps.versionsinrange.outputs.extensions), ',') }}
       - name: "Assert Output: requiredExtensions"
-        uses: therussiankid92/gat@v1
+        uses: nick-fields/assert-action@v1
         with:
-          assertion: should.equal
           expected: ${{ matrix.requiredExtensions }}
           actual: ${{ join(fromJson(steps.versionsinrange.outputs.requiredExtensions), ',') }}
       - name: "Assert Output: requiredDevExtensions"
-        uses: therussiankid92/gat@v1
+        uses: nick-fields/assert-action@v1
         with:
-          assertion: should.equal
           expected: ${{ matrix.requiredDevExtensions }}
           actual: ${{ join(fromJson(steps.versionsinrange.outputs.requiredDevExtensions), ',') }}
   extensions:

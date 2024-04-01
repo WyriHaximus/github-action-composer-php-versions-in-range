@@ -102,7 +102,7 @@ function getExtensionsFromLock(section, composer) {
 
     return composer['packages' + section]
         .flatMap(function (packageObject) {
-            return getExtensionsFromJason('require' + section, packageObject);
+            return getExtensionsFromJason('require', packageObject);
         });
 }
 
@@ -114,17 +114,19 @@ function sortAndFilterExtensions(array) {
 
 let requiredExtensions = getExtensionsFromJason('require', composerJson);
 if (composerLockExists) {
-    requiredExtensions = sortAndFilterExtensions(requiredExtensions.concat(
+    requiredExtensions = requiredExtensions.concat(
         getExtensionsFromLock('', composerLock)
-    ));
+    );
 }
+requiredExtensions = sortAndFilterExtensions(requiredExtensions);
 
 let requiredDevExtensions = getExtensionsFromJason('require-dev', composerJson);
 if (composerLockExists) {
-    requiredDevExtensions = sortAndFilterExtensions(requiredDevExtensions.concat(
+    requiredDevExtensions = requiredDevExtensions.concat(
         getExtensionsFromLock('-dev', composerLock)
-    ));
+    );
 }
+requiredDevExtensions = sortAndFilterExtensions(requiredDevExtensions);
 
 let allExtensions = sortAndFilterExtensions([...requiredExtensions, ...requiredDevExtensions]);
 
