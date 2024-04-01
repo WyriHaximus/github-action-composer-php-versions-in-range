@@ -38,6 +38,15 @@ jobs:
             requiredExtensions: "parallel"
             requiredDevExtensions: "pcov,xdebug"
             os: ubuntu-latest
+          - workingDirectory: "situations/wyrihaximus-test-utilities-composer.lock/"
+            highestUpcoming: "8.3"
+            nightly: "8.4"
+            highest: "8.3"
+            lowest: "8.2"
+            extensions: "bcmath,ctype,dom,filter,intl,json,libxml,mbstring,openssl,pcov,pcre,phar,reflection,simplexml,sodium,spl,tokenizer,xdebug,xml,xmlwriter"
+            requiredExtensions: "bcmath,ctype,dom,filter,intl,json,libxml,mbstring,openssl,pcre,phar,reflection,simplexml,sodium,spl,tokenizer,xml,xmlwriter"
+            requiredDevExtensions: "pcov,xdebug"
+            os: ubuntu-latest
         os:
           - ubuntu-latest
           - windows-latest

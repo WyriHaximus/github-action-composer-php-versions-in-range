@@ -106,25 +106,27 @@ function getExtensionsFromLock(section, composer) {
         });
 }
 
-let requiredExtensions = getExtensionsFromJason('require', composerJson);
-if (composerLockExists) {
-    requiredExtensions = requiredExtensions.concat(
-        getExtensionsFromLock('', composerLock)
-    ).filter(
+function sortAndFilterExtensions(array) {
+    return array.sort().filter(
         (value, index, array) => array.indexOf(value) === index
     );
 }
 
-let requiredDevExtensions = getExtensionsFromJason('require-dev', composerJson);
+let requiredExtensions = getExtensionsFromJason('require', composerJson);
 if (composerLockExists) {
-    requiredDevExtensions = requiredDevExtensions.concat(
-        getExtensionsFromLock('-dev', composerLock)
-    ).filter(
-        (value, index, array) =>  array.indexOf(value) === index
-    );
+    requiredExtensions = sortAndFilterExtensions(requiredExtensions.concat(
+        getExtensionsFromLock('', composerLock)
+    ));
 }
 
-let allExtensions = [...requiredExtensions, ...requiredDevExtensions];
+let requiredDevExtensions = getExtensionsFromJason('require-dev', composerJson);
+if (composerLockExists) {
+    requiredDevExtensions = sortAndFilterExtensions(requiredDevExtensions.concat(
+        getExtensionsFromLock('-dev', composerLock)
+    ));
+}
+
+let allExtensions = sortAndFilterExtensions([...requiredExtensions, ...requiredDevExtensions]);
 
 console.log(`All required extensions: ${JSON.stringify(allExtensions)}`);
 console.log(`Required extensions: ${JSON.stringify(requiredExtensions)}`);
