@@ -1,0 +1,55 @@
+{
+  "name": "wyrihaximus/react-phpunit-run-tests-in-fiber",
+  "description": "Trait to run all tests in a fiber",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Cees-Jan Kiewiet",
+      "email": "ceesjank@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^8.2",
+    "react/async": "^4.2.0",
+    "react/event-loop": "^1.5.0",
+    "react/promise": "^3.1"
+  },
+  "require-dev": {
+    "react/promise-timer": "^1.10.0",
+    "wyrihaximus/test-utilities": "^6.0"
+  },
+  "conflict": {
+    "phpunit/phpunit": "<10"
+  },
+  "autoload": {
+    "psr-4": {
+      "WyriHaximus\\React\\PHPUnit\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "WyriHaximus\\Tests\\React\\PHPUnit\\": "tests/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true,
+      "ergebnis/composer-normalize": true,
+      "icanhazstring/composer-unused": true,
+      "infection/extension-installer": true,
+      "php-http/discovery": true
+    },
+    "platform": {
+      "php": "8.2.13"
+    },
+    "sort-packages": true
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "composer normalize"
+    ],
+    "post-update-cmd": [
+      "composer normalize"
+    ]
+  }
+}
