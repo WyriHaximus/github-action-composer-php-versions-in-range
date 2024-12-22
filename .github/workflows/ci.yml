@@ -30,27 +30,27 @@ jobs:
             requiredDevExtensions: "pcov,xdebug"
             os: ubuntu-latest
           - workingDirectory: "situations/ext-parallel-composer.lock/"
-            highestUpcoming: "8.3"
+            highestUpcoming: "8.4"
             nightly: "8.4"
-            highest: "8.3"
+            highest: "8.4"
             lowest: "8.2"
             extensions: "parallel,pcov,xdebug"
             requiredExtensions: "parallel"
             requiredDevExtensions: "pcov,xdebug"
             os: ubuntu-latest
           - workingDirectory: "situations/wyrihaximus-test-utilities-composer.lock/"
-            highestUpcoming: "8.3"
+            highestUpcoming: "8.4"
             nightly: "8.4"
-            highest: "8.3"
+            highest: "8.4"
             lowest: "8.2"
             extensions: "bcmath,ctype,dom,filter,intl,json,libxml,mbstring,openssl,pcov,pcre,phar,reflection,simplexml,sodium,spl,tokenizer,xdebug,xml,xmlwriter"
             requiredExtensions: "bcmath,ctype,dom,filter,intl,json,libxml,mbstring,openssl,pcre,phar,reflection,simplexml,sodium,spl,tokenizer,xml,xmlwriter"
             requiredDevExtensions: "pcov,xdebug"
             os: ubuntu-latest
           - workingDirectory: "situations/wyrihaximus-react-phpunit-run-tests-in-fiber-composer.lock/"
-            highestUpcoming: "8.3"
+            highestUpcoming: "8.4"
             nightly: "8.4"
-            highest: "8.3"
+            highest: "8.4"
             lowest: "8.2"
             extensions: "bcmath,ctype,dom,filter,intl,json,libxml,mbstring,openssl,pcre,phar,reflection,simplexml,sodium,spl,tokenizer,xml,xmlwriter"
             requiredExtensions: ""
@@ -63,11 +63,11 @@ jobs:
         workingDirectory:
           - ""
         highestUpcoming:
-          - "8.3"
+          - "8.4"
         nightly:
           - "8.4"
         highest:
-          - "8.3"
+          - "8.4"
         lowest:
           - "7.3"
         extensions:
