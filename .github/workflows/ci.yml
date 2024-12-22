@@ -63,7 +63,7 @@ jobs:
         workingDirectory:
           - ""
         highestUpcoming:
-          - ""
+          - "8.4"
         nightly:
           - ""
         highest:
