@@ -30,7 +30,7 @@ jobs:
             requiredDevExtensions: "pcov,xdebug"
             os: ubuntu-latest
           - workingDirectory: "situations/ext-parallel-composer.lock/"
-            highestUpcoming: "8.4"
+            highestUpcoming: "8.5"
             nightly: "8.4"
             highest: "8.4"
             lowest: "8.2"
@@ -39,7 +39,7 @@ jobs:
             requiredDevExtensions: "pcov,xdebug"
             os: ubuntu-latest
           - workingDirectory: "situations/wyrihaximus-test-utilities-composer.lock/"
-            highestUpcoming: "8.4"
+            highestUpcoming: "8.5"
             nightly: "8.4"
             highest: "8.4"
             lowest: "8.2"
@@ -48,7 +48,7 @@ jobs:
             requiredDevExtensions: "pcov,xdebug"
             os: ubuntu-latest
           - workingDirectory: "situations/wyrihaximus-react-phpunit-run-tests-in-fiber-composer.lock/"
-            highestUpcoming: "8.4"
+            highestUpcoming: "8.5"
             nightly: "8.4"
             highest: "8.4"
             lowest: "8.2"
@@ -63,7 +63,7 @@ jobs:
         workingDirectory:
           - ""
         highestUpcoming:
-          - "8.4"
+          - "8.5"
         nightly:
           - "8.4"
         highest:
