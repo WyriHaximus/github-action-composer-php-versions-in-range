@@ -117,37 +117,37 @@ jobs:
       - run: |
           echo "${{ steps.versionsinrangeincludingnightlyandupcomingreleases.outputs.version }}"
       - name: "Assert Output: lowest"
-        uses: nick-fields/assert-action@v1
+        uses: nick-fields/assert-action@aa0067e01f0f6545c31755d6ca128c5a3a14f6bf # v2.0.0
         with:
           expected: ${{ matrix.lowest }}
           actual: ${{ steps.versionsinrange.outputs.lowest }}
       - name: "Assert Output: highest"
-        uses: nick-fields/assert-action@v1
+        uses: nick-fields/assert-action@aa0067e01f0f6545c31755d6ca128c5a3a14f6bf # v2.0.0
         with:
           expected: ${{ matrix.highest }}
           actual: ${{ steps.versionsinrange.outputs.highest }}
       - name: "Assert Output: highest (upcoming releases)"
-        uses: nick-fields/assert-action@v1
+        uses: nick-fields/assert-action@aa0067e01f0f6545c31755d6ca128c5a3a14f6bf # v2.0.0
         with:
           expected: ${{ matrix.highestUpcoming }}
           actual: ${{ steps.versionsinrangeincludingupcomingreleases.outputs.highest }}
       - name: "Assert Output: highest (nightly)"
-        uses: nick-fields/assert-action@v1
+        uses: nick-fields/assert-action@aa0067e01f0f6545c31755d6ca128c5a3a14f6bf # v2.0.0
         with:
           expected: ${{ matrix.nightly }}
           actual: ${{ steps.versionsinrangeincludingnightly.outputs.highest }}
       - name: "Assert Output: extensions"
-        uses: nick-fields/assert-action@v1
+        uses: nick-fields/assert-action@aa0067e01f0f6545c31755d6ca128c5a3a14f6bf # v2.0.0
         with:
           expected: ${{ matrix.extensions }}
           actual: ${{ join(fromJson(steps.versionsinrange.outputs.extensions), ',') }}
       - name: "Assert Output: requiredExtensions"
-        uses: nick-fields/assert-action@v1
+        uses: nick-fields/assert-action@aa0067e01f0f6545c31755d6ca128c5a3a14f6bf # v2.0.0
         with:
           expected: ${{ matrix.requiredExtensions }}
           actual: ${{ join(fromJson(steps.versionsinrange.outputs.requiredExtensions), ',') }}
       - name: "Assert Output: requiredDevExtensions"
-        uses: nick-fields/assert-action@v1
+        uses: nick-fields/assert-action@aa0067e01f0f6545c31755d6ca128c5a3a14f6bf # v2.0.0
         with:
           expected: ${{ matrix.requiredDevExtensions }}
           actual: ${{ join(fromJson(steps.versionsinrange.outputs.requiredDevExtensions), ',') }}
