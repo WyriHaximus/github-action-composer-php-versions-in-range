@@ -1,0 +1,17 @@
+name: Continuous Integration
+on:
+  push:
+  pull_request:
+jobs:
+  test:
+    strategy:
+      matrix:
+        php: [7.4, 8.0-rc]
+    runs-on: ubuntu-latest
+    container:
+      image: wyrihaximusnet/php:${{ matrix.php }}-nts-alpine3.12-dev-root
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install Dependencies
+        run: composer install --ansi --no-progress --no-interaction --prefer-dist
+      - run: php tests/test.php

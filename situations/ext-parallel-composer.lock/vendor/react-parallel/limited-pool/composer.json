@@ -1,0 +1,65 @@
+{
+    "name": "react-parallel/limited-pool",
+    "description": "\ud83c\udfd4\ufe0f Limited pool for ext-parallel",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Cees-Jan Kiewiet",
+            "email": "ceesjank@gmail.com",
+            "homepage": "http://wyrihaximus.net/"
+        }
+    ],
+    "require": {
+        "php": "^8.3",
+        "react-parallel/contracts": "^2.1.0",
+        "react/async": "^4.3.0",
+        "react/event-loop": "^1.5.0",
+        "react/promise": "^3.2.0",
+        "wyrihaximus/pool-info": "^2.0.0"
+    },
+    "require-dev": {
+        "ext-parallel": "*",
+        "moneyphp/money": "^4.7.0",
+        "react-parallel/event-loop": "^2.1.0",
+        "react-parallel/infinite-pool": "^3.1.0",
+        "react-parallel/pool-tests": "^5.0.0",
+        "react-parallel/stubs": "^1.2.0",
+        "wyrihaximus/async-test-utilities": "^9.3.0",
+        "wyrihaximus/makefiles": "^0.4.2"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "ReactParallel\\Pool\\Limited\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ReactParallel\\Tests\\Pool\\Limited\\": "tests/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "ergebnis/composer-normalize": true,
+            "icanhazstring/composer-unused": true,
+            "infection/extension-installer": true,
+            "ocramius/package-versions": true,
+            "phpstan/extension-installer": true,
+            "wyrihaximus/makefiles": true
+        },
+        "platform": {
+            "php": "8.3.13"
+        },
+        "sort-packages": true
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "composer normalize"
+        ],
+        "post-update-cmd": [
+            "composer normalize"
+        ]
+    }
+}

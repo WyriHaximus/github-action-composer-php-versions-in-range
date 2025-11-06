@@ -1,7 +1,7 @@
 {
   "require": {
     "php": "^8.2",
-    "react-parallel/react-parallel": "^1"
+    "react-parallel/react-parallel": "^1 || ^2"
   },
   "require-dev": {
     "ext-pcov": "*",

@@ -1,0 +1,51 @@
+{
+    "name": "react-parallel/contracts",
+    "description": "\ud83d\udcdc Interfaces for ReactPHP ext-parallel related packages",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Cees-Jan Kiewiet",
+            "email": "ceesjank@gmail.com",
+            "homepage": "https://wyrihaximus.net/"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "wyrihaximus/pool-info": "^2.0.0"
+    },
+    "require-dev": {
+        "ext-parallel": "*",
+        "react-parallel/stubs": "^1.2",
+        "wyrihaximus/async-test-utilities": "^8.0.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "ReactParallel\\Contracts\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ReactParallel\\Tests\\Contracts\\": "tests/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "ergebnis/composer-normalize": true,
+            "icanhazstring/composer-unused": true,
+            "infection/extension-installer": true
+        },
+        "platform": {
+            "php": "8.2.13"
+        },
+        "sort-packages": true
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "composer normalize"
+        ],
+        "post-update-cmd": [
+            "composer normalize"
+        ]
+    }
+}

@@ -1,0 +1,61 @@
+{
+    "name": "react-parallel/runtime",
+    "description": "\ud83d\udca8 Convinence wrapper around ext-parallel Runtime for and ReactPHP",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Cees-Jan Kiewiet",
+            "email": "ceesjank@gmail.com",
+            "homepage": "http://wyrihaximus.net/"
+        }
+    ],
+    "require": {
+        "php": "^8.3",
+        "ext-parallel": "*",
+        "react-parallel/event-loop": "^2.1.0",
+        "react/event-loop": "^1.5",
+        "react/promise": "^3.2",
+        "wyrihaximus/constants": "^1.6"
+    },
+    "require-dev": {
+        "react-parallel/stubs": "^1.2",
+        "wyrihaximus/async-test-utilities": "^9.3.0",
+        "wyrihaximus/makefiles": "^0.4.2",
+        "wyrihaximus/ticking-promise": "^3.1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "ReactParallel\\Runtime\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ReactParallel\\Tests\\Runtime\\": "tests/"
+        },
+        "files": [
+            "tests/LatchcombException.php"
+        ]
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "ergebnis/composer-normalize": true,
+            "icanhazstring/composer-unused": true,
+            "infection/extension-installer": true,
+            "phpstan/extension-installer": true,
+            "wyrihaximus/makefiles": true
+        },
+        "platform": {
+            "php": "8.3.13"
+        },
+        "sort-packages": true
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "composer normalize"
+        ],
+        "post-update-cmd": [
+            "composer normalize"
+        ]
+    }
+}

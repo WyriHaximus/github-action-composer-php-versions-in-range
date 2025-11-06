@@ -1,14 +1,9 @@
 {
-    "_readme": [
-        "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
-        "This file is @generated automatically"
-    ],
-    "content-hash": "9bc44ae806a456835d6fd9a3091ce79e",
     "packages": [
         {
             "name": "lcobucci/clock",
             "version": "3.5.0",
+            "version_normalized": "3.5.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lcobucci/clock.git",
@@ -37,7 +32,9 @@
                 "phpstan/phpstan-strict-rules": "^2.0.0",
                 "phpunit/phpunit": "^12.0.0"
             },
+            "time": "2025-10-27T09:03:17+00:00",
             "type": "library",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Lcobucci\\Clock\\": "src"
@@ -68,11 +65,12 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2025-10-27T09:03:17+00:00"
+            "install-path": "../lcobucci/clock"
         },
         {
             "name": "psr/clock",
             "version": "1.0.0",
+            "version_normalized": "1.0.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/clock.git",
@@ -87,7 +85,9 @@
             "require": {
                 "php": "^7.0 || ^8.0"
             },
+            "time": "2022-11-25T14:36:26+00:00",
             "type": "library",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Psr\\Clock\\": "src/"
@@ -116,11 +116,12 @@
                 "issues": "https://github.com/php-fig/clock/issues",
                 "source": "https://github.com/php-fig/clock/tree/1.0.0"
             },
-            "time": "2022-11-25T14:36:26+00:00"
+            "install-path": "../psr/clock"
         },
         {
             "name": "react-parallel/contracts",
             "version": "2.1.0",
+            "version_normalized": "2.1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp-parallel/contracts.git",
@@ -141,7 +142,9 @@
                 "react-parallel/stubs": "^1.2",
                 "wyrihaximus/async-test-utilities": "^8.0.5"
             },
+            "time": "2025-02-01T22:27:23+00:00",
             "type": "library",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "ReactParallel\\Contracts\\": "src/"
@@ -169,11 +172,12 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-02-01T22:27:23+00:00"
+            "install-path": "../react-parallel/contracts"
         },
         {
             "name": "react-parallel/event-loop",
             "version": "2.1.0",
+            "version_normalized": "2.1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp-parallel/event-loop.git",
@@ -199,7 +203,9 @@
                 "wyrihaximus/async-test-utilities": "^9.3.0",
                 "wyrihaximus/makefiles": "^0.4.2"
             },
+            "time": "2025-05-29T20:15:13+00:00",
             "type": "library",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "ReactParallel\\EventLoop\\": "src/"
@@ -227,11 +233,12 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-05-29T20:15:13+00:00"
+            "install-path": "../react-parallel/event-loop"
         },
         {
             "name": "react-parallel/infinite-pool",
             "version": "3.1.0",
+            "version_normalized": "3.1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp-parallel/infinite-pool.git",
@@ -266,7 +273,9 @@
             "suggest": {
                 "ext-random": "More secure group names"
             },
+            "time": "2025-05-29T21:10:36+00:00",
             "type": "library",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "ReactParallel\\Pool\\Infinite\\": "src/"
@@ -294,11 +303,12 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-05-29T21:10:36+00:00"
+            "install-path": "../react-parallel/infinite-pool"
         },
         {
             "name": "react-parallel/limited-pool",
             "version": "2.1.0",
+            "version_normalized": "2.1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp-parallel/limited-pool.git",
@@ -328,7 +338,9 @@
                 "wyrihaximus/async-test-utilities": "^9.3.0",
                 "wyrihaximus/makefiles": "^0.4.2"
             },
+            "time": "2025-05-29T21:49:02+00:00",
             "type": "library",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "ReactParallel\\Pool\\Limited\\": "src/"
@@ -356,11 +368,12 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-05-29T21:49:02+00:00"
+            "install-path": "../react-parallel/limited-pool"
         },
         {
             "name": "react-parallel/react-parallel",
             "version": "2.1.0",
+            "version_normalized": "2.1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp-parallel/reactphp-parallel.git",
@@ -388,7 +401,9 @@
                 "wyrihaximus/async-test-utilities": "^9.3.0",
                 "wyrihaximus/makefiles": "^0.4.2"
             },
+            "time": "2025-05-29T22:07:24+00:00",
             "type": "library",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "ReactParallel\\": "src/"
@@ -416,11 +431,12 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-05-29T22:07:24+00:00"
+            "install-path": "../react-parallel/react-parallel"
         },
         {
             "name": "react-parallel/runtime",
             "version": "3.1.0",
+            "version_normalized": "3.1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp-parallel/runtime.git",
@@ -446,7 +462,9 @@
                 "wyrihaximus/makefiles": "^0.4.2",
                 "wyrihaximus/ticking-promise": "^3.1.0"
             },
+            "time": "2025-05-29T20:28:18+00:00",
             "type": "library",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "ReactParallel\\Runtime\\": "src/"
@@ -474,11 +492,12 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-05-29T20:28:18+00:00"
+            "install-path": "../react-parallel/runtime"
         },
         {
             "name": "react-parallel/streams",
             "version": "2.0.0",
+            "version_normalized": "2.0.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp-parallel/streams.git",
@@ -502,7 +521,9 @@
                 "wyrihaximus/async-test-utilities": "^5 || ^7.3",
                 "wyrihaximus/ticking-promise": "^3"
             },
+            "time": "2025-02-10T20:36:53+00:00",
             "type": "library",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "ReactParallel\\Streams\\": "src/"
@@ -530,11 +551,12 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-02-10T20:36:53+00:00"
+            "install-path": "../react-parallel/streams"
         },
         {
             "name": "react/async",
             "version": "v4.3.0",
+            "version_normalized": "4.3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/async.git",
@@ -555,7 +577,9 @@
                 "phpstan/phpstan": "1.10.39",
                 "phpunit/phpunit": "^9.6"
             },
+            "time": "2024-06-04T14:40:02+00:00",
             "type": "library",
+            "installation-source": "dist",
             "autoload": {
                 "files": [
                     "src/functions_include.php"
@@ -605,11 +629,12 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2024-06-04T14:40:02+00:00"
+            "install-path": "../react/async"
         },
         {
             "name": "react/event-loop",
             "version": "v1.5.0",
+            "version_normalized": "1.5.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/event-loop.git",
@@ -630,7 +655,9 @@
             "suggest": {
                 "ext-pcntl": "For signal handling support when using the StreamSelectLoop"
             },
+            "time": "2023-11-13T13:48:05+00:00",
             "type": "library",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "React\\EventLoop\\": "src/"
@@ -677,11 +704,12 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2023-11-13T13:48:05+00:00"
+            "install-path": "../react/event-loop"
         },
         {
             "name": "react/promise",
             "version": "v3.3.0",
+            "version_normalized": "3.3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/promise.git",
@@ -700,7 +728,9 @@
                 "phpstan/phpstan": "1.12.28 || 1.4.10",
                 "phpunit/phpunit": "^9.6 || ^7.5"
             },
+            "time": "2025-08-19T18:57:03+00:00",
             "type": "library",
+            "installation-source": "dist",
             "autoload": {
                 "files": [
                     "src/functions_include.php"
@@ -750,11 +780,12 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2025-08-19T18:57:03+00:00"
+            "install-path": "../react/promise"
         },
         {
             "name": "wyrihaximus/constants",
             "version": "1.6.0",
+            "version_normalized": "1.6.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-constants.git",
@@ -769,7 +800,9 @@
             "require": {
                 "php": "^8 || ^7 || ^5.3"
             },
+            "time": "2020-11-28T12:04:43+00:00",
             "type": "library",
+            "installation-source": "dist",
             "autoload": {
                 "files": [
                     "src/Boolean/constants_include.php",
@@ -800,11 +833,12 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-11-28T12:04:43+00:00"
+            "install-path": "../wyrihaximus/constants"
         },
         {
             "name": "wyrihaximus/iterator-or-array-to-array",
             "version": "1.2.0",
+            "version_normalized": "1.2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-iterator-or-array-to-array.git",
@@ -822,7 +856,9 @@
             "require-dev": {
                 "wyrihaximus/test-utilities": "^3.7.3"
             },
+            "time": "2021-09-05T15:12:30+00:00",
             "type": "library",
+            "installation-source": "dist",
             "autoload": {
                 "files": [
                     "src/functions_include.php"
@@ -850,11 +886,12 @@
                 }
             ],
             "abandoned": "[...$iteratorOrArray] instead of this",
-            "time": "2021-09-05T15:12:30+00:00"
+            "install-path": "../wyrihaximus/iterator-or-array-to-array"
         },
         {
             "name": "wyrihaximus/metrics",
             "version": "3.0.0",
+            "version_normalized": "3.0.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-metrics.git",
@@ -875,7 +912,9 @@
                 "wyrihaximus/makefiles": "^0.3.1",
                 "wyrihaximus/test-utilities": "^7.0.0"
             },
+            "time": "2025-04-28T11:50:53+00:00",
             "type": "library",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "WyriHaximus\\Metrics\\": "src/"
@@ -902,11 +941,12 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-04-28T11:50:53+00:00"
+            "install-path": "../wyrihaximus/metrics"
         },
         {
             "name": "wyrihaximus/pool-info",
             "version": "2.0.0",
+            "version_normalized": "2.0.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-pool-info.git",
@@ -925,7 +965,9 @@
             "require-dev": {
                 "wyrihaximus/test-utilities": "^5.6"
             },
+            "time": "2023-11-15T21:37:49+00:00",
             "type": "library",
+            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "WyriHaximus\\PoolInfo\\": "src/"
@@ -952,21 +994,9 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-11-15T21:37:49+00:00"
+            "install-path": "../wyrihaximus/pool-info"
         }
     ],
-    "packages-dev": [],
-    "aliases": [],
-    "minimum-stability": "stable",
-    "stability-flags": {},
-    "prefer-stable": false,
-    "prefer-lowest": false,
-    "platform": {
-        "php": "^8.2"
-    },
-    "platform-dev": {
-        "ext-pcov": "*",
-        "ext-xdebug": "*"
-    },
-    "plugin-api-version": "2.6.0"
+    "dev": true,
+    "dev-package-names": []
 }

@@ -1,0 +1,39 @@
+{
+  "name": "wyrihaximus/pool-info",
+  "description": "Interface for pool info metrics",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Cees-Jan Kiewiet",
+      "email": "ceesjank@gmail.com"
+    }
+  ],
+  "require": {
+    "php": "^8.2",
+    "wyrihaximus/iterator-or-array-to-array": "^1.1"
+  },
+  "require-dev": {
+    "wyrihaximus/test-utilities": "^5.6"
+  },
+  "config": {
+    "platform": {
+      "php": "8.2.13"
+    },
+    "sort-packages": true,
+    "allow-plugins": {
+      "infection/extension-installer": true,
+      "dealerdirect/phpcodesniffer-composer-installer": true,
+      "ergebnis/composer-normalize": true
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "WyriHaximus\\PoolInfo\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "WyriHaximus\\Tests\\PoolInfo\\": "tests/"
+    }
+  }
+}
