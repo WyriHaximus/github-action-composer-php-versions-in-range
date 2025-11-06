@@ -11,7 +11,7 @@ jobs:
     name: Wait for status checks
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@50fbc622fc4ef5163becd7fab6573eac35f8462e # v1
       - run: sleep 13
       - name: 'Wait for status checks'
         id: waitforstatuschecks
@@ -49,7 +49,7 @@ jobs:
       - generate-changelog
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@50fbc622fc4ef5163becd7fab6573eac35f8462e # v1
       - name: Create release/${{ env.MILESTONE }} branch
         run: git checkout -b release/${{ env.MILESTONE }} ${GITHUB_SHA}
       - run: echo -e "${CHANGELOG}" > release-${{ env.MILESTONE }}-changelog.md
@@ -68,7 +68,7 @@ jobs:
           MILESTONE_DESCRIPTION: ${{ github.event.milestone.description }}
           CHANGELOG: ${{ needs.generate-changelog.outputs.changelog }}
       - name: Create release
-        uses: actions/create-release@v1
+        uses: actions/create-release@0cb9c9b65d5d1901c1f53e5e66eaf4afd303e70e # v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -78,7 +78,7 @@ jobs:
           draft: false
           prerelease: false
       - name: Updated related tags
-        uses: haya14busa/action-update-semver@v1.2.1
+        uses: haya14busa/action-update-semver@fb48464b2438ae82cc78237be61afb4f461265a1 # v1.2.1
         with:
           tag: ${{ env.MILESTONE }}
 
