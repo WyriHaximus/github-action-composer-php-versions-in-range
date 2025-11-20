@@ -83,7 +83,7 @@ jobs:
       requiredDevExtensions: ${{ steps.versionsinrange.outputs.requiredDevExtensions }}
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
       - name: 'Composer PHP versions in range'
         id: versionsinrange
         uses: ./
