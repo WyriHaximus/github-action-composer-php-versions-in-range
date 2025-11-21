@@ -1,6 +1,6 @@
 {
   "require": {
-    "php": "^5",
+    "php": "^5 || ^8",
     "ext-ast": "*"
   },
   "require-dev": {
