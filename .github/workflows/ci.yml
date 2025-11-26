@@ -83,7 +83,7 @@ jobs:
       requiredDevExtensions: ${{ steps.versionsinrange.outputs.requiredDevExtensions }}
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 # v2
       - name: 'Composer PHP versions in range'
         id: versionsinrange
         uses: ./
@@ -117,37 +117,37 @@ jobs:
       - run: |
           echo "${{ steps.versionsinrangeincludingnightlyandupcomingreleases.outputs.version }}"
       - name: "Assert Output: lowest"
-        uses: nick-fields/assert-action@v1
+        uses: nick-fields/assert-action@1e012cc9f1bf73ccc96470b56c8887478c647e8a # v1
         with:
           expected: ${{ matrix.lowest }}
           actual: ${{ steps.versionsinrange.outputs.lowest }}
       - name: "Assert Output: highest"
-        uses: nick-fields/assert-action@v1
+        uses: nick-fields/assert-action@1e012cc9f1bf73ccc96470b56c8887478c647e8a # v1
         with:
           expected: ${{ matrix.highest }}
           actual: ${{ steps.versionsinrange.outputs.highest }}
       - name: "Assert Output: highest (upcoming releases)"
-        uses: nick-fields/assert-action@v1
+        uses: nick-fields/assert-action@1e012cc9f1bf73ccc96470b56c8887478c647e8a # v1
         with:
           expected: ${{ matrix.highestUpcoming }}
           actual: ${{ steps.versionsinrangeincludingupcomingreleases.outputs.highest }}
       - name: "Assert Output: highest (nightly)"
-        uses: nick-fields/assert-action@v1
+        uses: nick-fields/assert-action@1e012cc9f1bf73ccc96470b56c8887478c647e8a # v1
         with:
           expected: ${{ matrix.nightly }}
           actual: ${{ steps.versionsinrangeincludingnightly.outputs.highest }}
       - name: "Assert Output: extensions"
-        uses: nick-fields/assert-action@v1
+        uses: nick-fields/assert-action@1e012cc9f1bf73ccc96470b56c8887478c647e8a # v1
         with:
           expected: ${{ matrix.extensions }}
           actual: ${{ join(fromJson(steps.versionsinrange.outputs.extensions), ',') }}
       - name: "Assert Output: requiredExtensions"
-        uses: nick-fields/assert-action@v1
+        uses: nick-fields/assert-action@1e012cc9f1bf73ccc96470b56c8887478c647e8a # v1
         with:
           expected: ${{ matrix.requiredExtensions }}
           actual: ${{ join(fromJson(steps.versionsinrange.outputs.requiredExtensions), ',') }}
       - name: "Assert Output: requiredDevExtensions"
-        uses: nick-fields/assert-action@v1
+        uses: nick-fields/assert-action@1e012cc9f1bf73ccc96470b56c8887478c647e8a # v1
         with:
           expected: ${{ matrix.requiredDevExtensions }}
           actual: ${{ join(fromJson(steps.versionsinrange.outputs.requiredDevExtensions), ',') }}
@@ -167,7 +167,7 @@ jobs:
           echo "All require extensions: ${{ needs.get-supported-php-versions.outputs.extensions }}"
           echo "Require extensions: ${{ needs.get-supported-php-versions.outputs.requiredExtensions }}"
           echo "Dev require extensions: ${{ needs.get-supported-php-versions.outputs.requiredDevExtensions }}"
-      - uses: shivammathur/setup-php@v2
+      - uses: shivammathur/setup-php@44454db4f0199b8b9685a5d763dc37cbf79108e1 # v2
         with:
           php-version: ${{ needs.get-supported-php-versions.outputs.highest }}
           tools: composer
