@@ -167,7 +167,7 @@ jobs:
           echo "All require extensions: ${{ needs.get-supported-php-versions.outputs.extensions }}"
           echo "Require extensions: ${{ needs.get-supported-php-versions.outputs.requiredExtensions }}"
           echo "Dev require extensions: ${{ needs.get-supported-php-versions.outputs.requiredDevExtensions }}"
-      - uses: shivammathur/setup-php@v2
+      - uses: shivammathur/setup-php@7bf05c6b704e0b9bfee22300130a31b5ea68d593 # 2.36.0
         with:
           php-version: ${{ needs.get-supported-php-versions.outputs.highest }}
           tools: composer
