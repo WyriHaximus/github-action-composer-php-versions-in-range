@@ -38,6 +38,7 @@ let nightlyVersion = '';
     '8.2',
     '8.3',
     '8.4',
+    '8.5',
 ].forEach(function (version) {
     if (semver.satisfies(version + '.0', supportedVersionsRange)) {
         versions.push(version);
@@ -46,7 +47,6 @@ let nightlyVersion = '';
 
 if (process.env.INPUT_UPCOMINGRELEASES === 'true') {
     [
-        '8.5',
     ].forEach(function (version) {
         if (semver.satisfies(version + '.0', supportedVersionsRange)) {
             versions.push(version);
