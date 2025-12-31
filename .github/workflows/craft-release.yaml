@@ -11,7 +11,7 @@ jobs:
     name: Wait for status checks
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
       - run: sleep 13
       - name: 'Wait for status checks'
         id: waitforstatuschecks
@@ -49,7 +49,7 @@ jobs:
       - generate-changelog
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
       - name: Create release/${{ env.MILESTONE }} branch
         run: git checkout -b release/${{ env.MILESTONE }} ${GITHUB_SHA}
       - run: echo -e "${CHANGELOG}" > release-${{ env.MILESTONE }}-changelog.md
