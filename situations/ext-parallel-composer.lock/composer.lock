@@ -4,38 +4,38 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a1b36bc38bcb2d3522cd825f39e0b60b",
+    "content-hash": "9bc44ae806a456835d6fd9a3091ce79e",
     "packages": [
         {
             "name": "lcobucci/clock",
-            "version": "2.3.0",
+            "version": "3.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lcobucci/clock.git",
-                "reference": "c7aadcd6fd97ed9e199114269c0be3f335e38876"
+                "reference": "a3139d9e97d47826f27e6a17bb63f13621f86058"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lcobucci/clock/zipball/c7aadcd6fd97ed9e199114269c0be3f335e38876",
-                "reference": "c7aadcd6fd97ed9e199114269c0be3f335e38876",
+                "url": "https://api.github.com/repos/lcobucci/clock/zipball/a3139d9e97d47826f27e6a17bb63f13621f86058",
+                "reference": "a3139d9e97d47826f27e6a17bb63f13621f86058",
                 "shasum": ""
             },
             "require": {
-                "php": "~8.1.0 || ~8.2.0",
-                "stella-maris/clock": "^0.1.7"
+                "php": "~8.3.0 || ~8.4.0 || ~8.5.0",
+                "psr/clock": "^1.0"
             },
             "provide": {
                 "psr/clock-implementation": "1.0"
             },
             "require-dev": {
-                "infection/infection": "^0.26",
-                "lcobucci/coding-standard": "^9.0",
-                "phpstan/extension-installer": "^1.2",
-                "phpstan/phpstan": "^1.9.4",
-                "phpstan/phpstan-deprecation-rules": "^1.1.1",
-                "phpstan/phpstan-phpunit": "^1.3.2",
-                "phpstan/phpstan-strict-rules": "^1.4.4",
-                "phpunit/phpunit": "^9.5.27"
+                "infection/infection": "^0.31",
+                "lcobucci/coding-standard": "^11.2.0",
+                "phpstan/extension-installer": "^1.3.1",
+                "phpstan/phpstan": "^2.0.0",
+                "phpstan/phpstan-deprecation-rules": "^2.0.0",
+                "phpstan/phpstan-phpunit": "^2.0.0",
+                "phpstan/phpstan-strict-rules": "^2.0.0",
+                "phpunit/phpunit": "^12.0.0"
             },
             "type": "library",
             "autoload": {
@@ -56,7 +56,7 @@
             "description": "Yet another clock abstraction",
             "support": {
                 "issues": "https://github.com/lcobucci/clock/issues",
-                "source": "https://github.com/lcobucci/clock/tree/2.3.0"
+                "source": "https://github.com/lcobucci/clock/tree/3.5.0"
             },
             "funding": [
                 {
@@ -68,7 +68,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2022-12-19T14:38:11+00:00"
+            "time": "2025-10-27T09:03:17+00:00"
         },
         {
             "name": "psr/clock",
@@ -120,22 +120,26 @@
         },
         {
             "name": "react-parallel/contracts",
-            "version": "1.0.0",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp-parallel/contracts.git",
-                "reference": "b796438787c77fdea14ba4ebb7034fbaa8c188ba"
+                "reference": "05202774b47e7ca886babc37905f25bcd3c91e26"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp-parallel/contracts/zipball/b796438787c77fdea14ba4ebb7034fbaa8c188ba",
-                "reference": "b796438787c77fdea14ba4ebb7034fbaa8c188ba",
+                "url": "https://api.github.com/repos/reactphp-parallel/contracts/zipball/05202774b47e7ca886babc37905f25bcd3c91e26",
+                "reference": "05202774b47e7ca886babc37905f25bcd3c91e26",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.4",
-                "react/promise": "^3.0 || ^2.7",
-                "wyrihaximus/pool-info": "^1.0"
+                "php": "^8.2",
+                "wyrihaximus/pool-info": "^2.0.0"
+            },
+            "require-dev": {
+                "ext-parallel": "*",
+                "react-parallel/stubs": "^1.2",
+                "wyrihaximus/async-test-utilities": "^8.0.5"
             },
             "type": "library",
             "autoload": {
@@ -151,48 +155,51 @@
                 {
                     "name": "Cees-Jan Kiewiet",
                     "email": "ceesjank@gmail.com",
-                    "homepage": "http://wyrihaximus.net/"
+                    "homepage": "https://wyrihaximus.net/"
                 }
             ],
-            "description": "Interfaces for ReactPHP ext-parallel related packages",
+            "description": "📜 Interfaces for ReactPHP ext-parallel related packages",
             "support": {
                 "issues": "https://github.com/reactphp-parallel/contracts/issues",
-                "source": "https://github.com/reactphp-parallel/contracts/tree/master"
+                "source": "https://github.com/reactphp-parallel/contracts/tree/2.1.0"
             },
-            "time": "2020-02-12T20:42:57+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/WyriHaximus",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-02-01T22:27:23+00:00"
         },
         {
             "name": "react-parallel/event-loop",
-            "version": "1.2.0",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp-parallel/event-loop.git",
-                "reference": "d50e8997d82de806fee022b6d8b1d8d075f9ca3e"
+                "reference": "893fa81556b997629cc83a24002d2f5a7c881ad6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp-parallel/event-loop/zipball/d50e8997d82de806fee022b6d8b1d8d075f9ca3e",
-                "reference": "d50e8997d82de806fee022b6d8b1d8d075f9ca3e",
+                "url": "https://api.github.com/repos/reactphp-parallel/event-loop/zipball/893fa81556b997629cc83a24002d2f5a7c881ad6",
+                "reference": "893fa81556b997629cc83a24002d2f5a7c881ad6",
                 "shasum": ""
             },
             "require": {
                 "ext-parallel": "*",
-                "php": "^7.4",
-                "react/event-loop": "^1.1",
-                "react/promise": "^2.7",
-                "reactivex/rxphp": "^2.0",
-                "wyrihaximus/constants": "^1.6.0",
-                "wyrihaximus/metrics": "^1.0"
+                "php": "^8.3",
+                "react/async": "^4.3",
+                "react/event-loop": "^1.5",
+                "react/promise": "^3.2",
+                "wyrihaximus/metrics": "^2.1 || ^3"
             },
             "require-dev": {
-                "wyrihaximus/async-test-utilities": "^3.2"
+                "react-parallel/stubs": "^1.2",
+                "react/promise-timer": "^1.11",
+                "wyrihaximus/async-test-utilities": "^9.3.0",
+                "wyrihaximus/makefiles": "^0.4.2"
             },
             "type": "library",
-            "extra": {
-                "unused": [
-                    "ext-parallel"
-                ]
-            },
             "autoload": {
                 "psr-4": {
                     "ReactParallel\\EventLoop\\": "src/"
@@ -212,7 +219,7 @@
             "description": "🌀🌉🌀 Event Loop bridge to ext-parallel Events",
             "support": {
                 "issues": "https://github.com/reactphp-parallel/event-loop/issues",
-                "source": "https://github.com/reactphp-parallel/event-loop/tree/1.2.0"
+                "source": "https://github.com/reactphp-parallel/event-loop/tree/2.1.0"
             },
             "funding": [
                 {
@@ -220,40 +227,44 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-12-19T16:47:19+00:00"
+            "time": "2025-05-29T20:15:13+00:00"
         },
         {
             "name": "react-parallel/infinite-pool",
-            "version": "2.1.2",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp-parallel/infinite-pool.git",
-                "reference": "fb2b923793527f76a77915476b58186ec1d21109"
+                "reference": "63b1fdc8f9f0bcd4253ecb9ff6bbdc5ae5aff6e2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp-parallel/infinite-pool/zipball/fb2b923793527f76a77915476b58186ec1d21109",
-                "reference": "fb2b923793527f76a77915476b58186ec1d21109",
+                "url": "https://api.github.com/repos/reactphp-parallel/infinite-pool/zipball/63b1fdc8f9f0bcd4253ecb9ff6bbdc5ae5aff6e2",
+                "reference": "63b1fdc8f9f0bcd4253ecb9ff6bbdc5ae5aff6e2",
                 "shasum": ""
             },
             "require": {
                 "ext-parallel": "*",
-                "php": "^7.4",
-                "react-parallel/contracts": "^1.0",
-                "react-parallel/event-loop": "^1.0",
-                "react-parallel/runtime": "^2.0",
-                "react/event-loop": "^1.1",
-                "react/promise": "^2.7",
-                "wyrihaximus/constants": "^1.5",
-                "wyrihaximus/metrics": "^1.0",
-                "wyrihaximus/pool-info": "^1.0"
+                "ext-random": "*",
+                "php": "^8.3",
+                "react-parallel/contracts": "^2.1.0",
+                "react-parallel/event-loop": "^2.1.0",
+                "react-parallel/runtime": "^3.1.0",
+                "react/event-loop": "^1.5",
+                "react/promise": "^3.2",
+                "wyrihaximus/constants": "^1.6",
+                "wyrihaximus/metrics": "^2.1 || ^3",
+                "wyrihaximus/pool-info": "^2.0"
             },
             "require-dev": {
-                "bruli/php-value-objects": "^2.0",
-                "moneyphp/money": "^3.2 || ^3.2.1",
-                "react-parallel/pool-tests": "^3.0",
-                "wyrihaximus/async-test-utilities": "^3.2",
-                "wyrihaximus/iterator-or-array-to-array": "^1.1"
+                "moneyphp/money": "^4.7.0",
+                "react-parallel/pool-tests": "^5.0.0",
+                "react-parallel/stubs": "^1.2",
+                "wyrihaximus/async-test-utilities": "^9.3.0",
+                "wyrihaximus/makefiles": "^0.4.2"
+            },
+            "suggest": {
+                "ext-random": "More secure group names"
             },
             "type": "library",
             "autoload": {
@@ -275,7 +286,7 @@
             "description": "♾️ Infinite pool for bridging ext-parallel and ReactPHP",
             "support": {
                 "issues": "https://github.com/reactphp-parallel/infinite-pool/issues",
-                "source": "https://github.com/reactphp-parallel/infinite-pool/tree/2.1.2"
+                "source": "https://github.com/reactphp-parallel/infinite-pool/tree/3.1.0"
             },
             "funding": [
                 {
@@ -283,39 +294,39 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-11-21T12:37:59+00:00"
+            "time": "2025-05-29T21:10:36+00:00"
         },
         {
             "name": "react-parallel/limited-pool",
-            "version": "1.0.2",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp-parallel/limited-pool.git",
-                "reference": "9901ba62368641eb867babf046bd6c7370a9abea"
+                "reference": "71fb32ea329f369bf939b3704518ffdfb6af7b9a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp-parallel/limited-pool/zipball/9901ba62368641eb867babf046bd6c7370a9abea",
-                "reference": "9901ba62368641eb867babf046bd6c7370a9abea",
+                "url": "https://api.github.com/repos/reactphp-parallel/limited-pool/zipball/71fb32ea329f369bf939b3704518ffdfb6af7b9a",
+                "reference": "71fb32ea329f369bf939b3704518ffdfb6af7b9a",
                 "shasum": ""
             },
             "require": {
-                "ext-parallel": "*",
-                "php": "^7.4",
-                "react-parallel/contracts": "^1.0",
-                "react-parallel/event-loop": "^1.0",
-                "react-parallel/infinite-pool": "^2.0",
-                "react-parallel/runtime": "^2.0",
-                "react/event-loop": "^1.1",
-                "react/promise": "^2.7",
-                "wyrihaximus/pool-info": "^1.0"
+                "php": "^8.3",
+                "react-parallel/contracts": "^2.1.0",
+                "react/async": "^4.3.0",
+                "react/event-loop": "^1.5.0",
+                "react/promise": "^3.2.0",
+                "wyrihaximus/pool-info": "^2.0.0"
             },
             "require-dev": {
-                "moneyphp/money": "^3.2 || ^3.2.1",
-                "ocramius/package-versions": "^1.4",
-                "react-parallel/pool-tests": "^3.0",
-                "wyrihaximus/async-test-utilities": "^3.3",
-                "wyrihaximus/iterator-or-array-to-array": "^1.1"
+                "ext-parallel": "*",
+                "moneyphp/money": "^4.7.0",
+                "react-parallel/event-loop": "^2.1.0",
+                "react-parallel/infinite-pool": "^3.1.0",
+                "react-parallel/pool-tests": "^5.0.0",
+                "react-parallel/stubs": "^1.2.0",
+                "wyrihaximus/async-test-utilities": "^9.3.0",
+                "wyrihaximus/makefiles": "^0.4.2"
             },
             "type": "library",
             "autoload": {
@@ -337,7 +348,7 @@
             "description": "🏔️ Limited pool for ext-parallel",
             "support": {
                 "issues": "https://github.com/reactphp-parallel/limited-pool/issues",
-                "source": "https://github.com/reactphp-parallel/limited-pool/tree/1.0.2"
+                "source": "https://github.com/reactphp-parallel/limited-pool/tree/2.1.0"
             },
             "funding": [
                 {
@@ -345,99 +356,37 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-08-15T12:15:15+00:00"
-        },
-        {
-            "name": "react-parallel/object-proxy-attributes",
-            "version": "1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/reactphp-parallel/object-proxy-attributes.git",
-                "reference": "2ee1cebc5f2a4dfd75f372ff77d144c631388859"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/reactphp-parallel/object-proxy-attributes/zipball/2ee1cebc5f2a4dfd75f372ff77d144c631388859",
-                "reference": "2ee1cebc5f2a4dfd75f372ff77d144c631388859",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^8 || ^7.4"
-            },
-            "require-dev": {
-                "doctrine/annotations": "^1.11",
-                "wyrihaximus/test-utilities": "^2.9 || ^3.0"
-            },
-            "type": "library",
-            "extra": {
-                "unused": [
-                    "php"
-                ]
-            },
-            "autoload": {
-                "psr-4": {
-                    "ReactParallel\\ObjectProxy\\Attribute\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Cees-Jan Kiewiet",
-                    "email": "ceesjank@gmail.com",
-                    "homepage": "http://wyrihaximus.net/"
-                }
-            ],
-            "description": "👨‍🚀🛰👩‍🚀 Attributes for react-parallel/object-proxy",
-            "support": {
-                "issues": "https://github.com/reactphp-parallel/object-proxy-attributes/issues",
-                "source": "https://github.com/reactphp-parallel/object-proxy-attributes/tree/1.1.0"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/WyriHaximus",
-                    "type": "github"
-                }
-            ],
-            "time": "2021-11-11T08:41:45+00:00"
+            "time": "2025-05-29T21:49:02+00:00"
         },
         {
             "name": "react-parallel/react-parallel",
-            "version": "1.1.0",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp-parallel/reactphp-parallel.git",
-                "reference": "9fa0f4788e92e2f1feb6c0e87e3dce3fcab411a9"
+                "reference": "bc5fb9d9987c5378dda4e14bd22f2fa069260869"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp-parallel/reactphp-parallel/zipball/9fa0f4788e92e2f1feb6c0e87e3dce3fcab411a9",
-                "reference": "9fa0f4788e92e2f1feb6c0e87e3dce3fcab411a9",
+                "url": "https://api.github.com/repos/reactphp-parallel/reactphp-parallel/zipball/bc5fb9d9987c5378dda4e14bd22f2fa069260869",
+                "reference": "bc5fb9d9987c5378dda4e14bd22f2fa069260869",
                 "shasum": ""
             },
             "require": {
                 "ext-parallel": "*",
-                "php": "^7.4",
-                "react-parallel/contracts": "^1.0",
-                "react-parallel/event-loop": "^1.1",
-                "react-parallel/infinite-pool": "^2.1",
-                "react-parallel/limited-pool": "^1.0",
-                "react-parallel/runtime": "^2.0",
-                "react-parallel/streams": "^1.0",
-                "react/event-loop": "^1.1",
-                "react/promise": "^2.8",
-                "wyrihaximus/constants": "^1.5",
-                "wyrihaximus/metrics": "^1"
+                "php": "^8.3",
+                "react-parallel/contracts": "^2.1.0",
+                "react-parallel/event-loop": "^2.1.0",
+                "react-parallel/infinite-pool": "^3.1.0",
+                "react-parallel/limited-pool": "^2.1.0",
+                "react-parallel/streams": "^2.0.0",
+                "react/promise": "^3.2.0",
+                "wyrihaximus/metrics": "^2 || ^3"
             },
             "require-dev": {
-                "ancarda/psr7-string-stream": "^1.3",
-                "moneyphp/money": "^3.3",
-                "ocramius/package-versions": "^1.9",
-                "react/http": "^1.1",
-                "wyrihaximus/async-test-utilities": "^3.2",
-                "wyrihaximus/iterator-or-array-to-array": "^1.1"
+                "react-parallel/stubs": "^1.2",
+                "wyrihaximus/async-test-utilities": "^9.3.0",
+                "wyrihaximus/makefiles": "^0.4.2"
             },
             "type": "library",
             "autoload": {
@@ -459,7 +408,7 @@
             "description": "🌉 Bridging ext-parallel and ReactPHP",
             "support": {
                 "issues": "https://github.com/reactphp-parallel/reactphp-parallel/issues",
-                "source": "https://github.com/reactphp-parallel/reactphp-parallel/tree/1.1.0"
+                "source": "https://github.com/reactphp-parallel/reactphp-parallel/tree/2.1.0"
             },
             "funding": [
                 {
@@ -467,33 +416,35 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-11-20T00:07:02+00:00"
+            "time": "2025-05-29T22:07:24+00:00"
         },
         {
             "name": "react-parallel/runtime",
-            "version": "2.0.0",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp-parallel/runtime.git",
-                "reference": "5c8ece636cf2cc3187f570c9db02a93d0a858ce3"
+                "reference": "d012e9e6414657d2c8ef5307aac7b4213709ce90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp-parallel/runtime/zipball/5c8ece636cf2cc3187f570c9db02a93d0a858ce3",
-                "reference": "5c8ece636cf2cc3187f570c9db02a93d0a858ce3",
+                "url": "https://api.github.com/repos/reactphp-parallel/runtime/zipball/d012e9e6414657d2c8ef5307aac7b4213709ce90",
+                "reference": "d012e9e6414657d2c8ef5307aac7b4213709ce90",
                 "shasum": ""
             },
             "require": {
                 "ext-parallel": "*",
-                "php": "^7.4",
-                "react-parallel/event-loop": "^1.0",
-                "react/event-loop": "^1.1",
-                "react/promise": "^2.7",
-                "wyrihaximus/constants": "^1.4.3"
+                "php": "^8.3",
+                "react-parallel/event-loop": "^2.1.0",
+                "react/event-loop": "^1.5",
+                "react/promise": "^3.2",
+                "wyrihaximus/constants": "^1.6"
             },
             "require-dev": {
-                "wyrihaximus/async-test-utilities": "^2.2",
-                "wyrihaximus/ticking-promise": "^1.6"
+                "react-parallel/stubs": "^1.2",
+                "wyrihaximus/async-test-utilities": "^9.3.0",
+                "wyrihaximus/makefiles": "^0.4.2",
+                "wyrihaximus/ticking-promise": "^3.1.0"
             },
             "type": "library",
             "autoload": {
@@ -515,7 +466,7 @@
             "description": "💨 Convinence wrapper around ext-parallel Runtime for and ReactPHP",
             "support": {
                 "issues": "https://github.com/reactphp-parallel/runtime/issues",
-                "source": "https://github.com/reactphp-parallel/runtime/tree/2.0.0"
+                "source": "https://github.com/reactphp-parallel/runtime/tree/3.1.0"
             },
             "funding": [
                 {
@@ -523,41 +474,35 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-07-06T11:17:51+00:00"
+            "time": "2025-05-29T20:28:18+00:00"
         },
         {
             "name": "react-parallel/streams",
-            "version": "1.0.0",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp-parallel/streams.git",
-                "reference": "916844a8f0a2f0ce6d5d723ae9473fa71b1657cf"
+                "reference": "7056d554859d46204450dc961346ec0c345bac54"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp-parallel/streams/zipball/916844a8f0a2f0ce6d5d723ae9473fa71b1657cf",
-                "reference": "916844a8f0a2f0ce6d5d723ae9473fa71b1657cf",
+                "url": "https://api.github.com/repos/reactphp-parallel/streams/zipball/7056d554859d46204450dc961346ec0c345bac54",
+                "reference": "7056d554859d46204450dc961346ec0c345bac54",
                 "shasum": ""
             },
             "require": {
                 "ext-parallel": "*",
-                "php": "^7.4",
-                "react-parallel/event-loop": "^1.0",
-                "react/event-loop": "^1.1",
-                "react/promise": "^2.8",
-                "reactivex/rxphp": "^2.0",
-                "wyrihaximus/constants": "^1.5"
+                "php": "^8.1",
+                "react-parallel/event-loop": "^2.0.0",
+                "react/event-loop": "^1.5",
+                "react/promise": "^2.11 || ^3.1"
             },
             "require-dev": {
-                "wyrihaximus/async-test-utilities": "^2.2",
-                "wyrihaximus/ticking-promise": "^1.6"
+                "react-parallel/stubs": "^1.2",
+                "wyrihaximus/async-test-utilities": "^5 || ^7.3",
+                "wyrihaximus/ticking-promise": "^3"
             },
             "type": "library",
-            "extra": {
-                "unused": [
-                    "ext-parallel"
-                ]
-            },
             "autoload": {
                 "psr-4": {
                     "ReactParallel\\Streams\\": "src/"
@@ -577,7 +522,7 @@
             "description": "🏞️ Streams abstraction around ext-parallel Channels for ReactPHP",
             "support": {
                 "issues": "https://github.com/reactphp-parallel/streams/issues",
-                "source": "https://github.com/reactphp-parallel/streams/tree/master"
+                "source": "https://github.com/reactphp-parallel/streams/tree/2.0.0"
             },
             "funding": [
                 {
@@ -585,7 +530,82 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-08-08T18:36:40+00:00"
+            "time": "2025-02-10T20:36:53+00:00"
+        },
+        {
+            "name": "react/async",
+            "version": "v4.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/reactphp/async.git",
+                "reference": "635d50e30844a484495713e8cb8d9e079c0008a5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/reactphp/async/zipball/635d50e30844a484495713e8cb8d9e079c0008a5",
+                "reference": "635d50e30844a484495713e8cb8d9e079c0008a5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "react/event-loop": "^1.2",
+                "react/promise": "^3.2 || ^2.8 || ^1.2.1"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "1.10.39",
+                "phpunit/phpunit": "^9.6"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/functions_include.php"
+                ],
+                "psr-4": {
+                    "React\\Async\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Lück",
+                    "email": "christian@clue.engineering",
+                    "homepage": "https://clue.engineering/"
+                },
+                {
+                    "name": "Cees-Jan Kiewiet",
+                    "email": "reactphp@ceesjankiewiet.nl",
+                    "homepage": "https://wyrihaximus.net/"
+                },
+                {
+                    "name": "Jan Sorgalla",
+                    "email": "jsorgalla@gmail.com",
+                    "homepage": "https://sorgalla.com/"
+                },
+                {
+                    "name": "Chris Boden",
+                    "email": "cboden@gmail.com",
+                    "homepage": "https://cboden.dev/"
+                }
+            ],
+            "description": "Async utilities and fibers for ReactPHP",
+            "keywords": [
+                "async",
+                "reactphp"
+            ],
+            "support": {
+                "issues": "https://github.com/reactphp/async/issues",
+                "source": "https://github.com/reactphp/async/tree/v4.3.0"
+            },
+            "funding": [
+                {
+                    "url": "https://opencollective.com/reactphp",
+                    "type": "open_collective"
+                }
+            ],
+            "time": "2024-06-04T14:40:02+00:00"
         },
         {
             "name": "react/event-loop",
@@ -661,23 +681,24 @@
         },
         {
             "name": "react/promise",
-            "version": "v2.11.0",
+            "version": "v3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp/promise.git",
-                "reference": "1a8460931ea36dc5c76838fec5734d55c88c6831"
+                "reference": "23444f53a813a3296c1368bb104793ce8d88f04a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp/promise/zipball/1a8460931ea36dc5c76838fec5734d55c88c6831",
-                "reference": "1a8460931ea36dc5c76838fec5734d55c88c6831",
+                "url": "https://api.github.com/repos/reactphp/promise/zipball/23444f53a813a3296c1368bb104793ce8d88f04a",
+                "reference": "23444f53a813a3296c1368bb104793ce8d88f04a",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.4.0"
+                "php": ">=7.1.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^9.6 || ^5.7 || ^4.8.36"
+                "phpstan/phpstan": "1.12.28 || 1.4.10",
+                "phpunit/phpunit": "^9.6 || ^7.5"
             },
             "type": "library",
             "autoload": {
@@ -721,7 +742,7 @@
             ],
             "support": {
                 "issues": "https://github.com/reactphp/promise/issues",
-                "source": "https://github.com/reactphp/promise/tree/v2.11.0"
+                "source": "https://github.com/reactphp/promise/tree/v3.3.0"
             },
             "funding": [
                 {
@@ -729,261 +750,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2023-11-16T16:16:50+00:00"
-        },
-        {
-            "name": "reactivex/rxphp",
-            "version": "2.0.12",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ReactiveX/RxPHP.git",
-                "reference": "eee8eb20ec310632d0356ff1bcaccf5c90094ba6"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ReactiveX/RxPHP/zipball/eee8eb20ec310632d0356ff1bcaccf5c90094ba6",
-                "reference": "eee8eb20ec310632d0356ff1bcaccf5c90094ba6",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.0.0",
-                "react/promise": "^3 || ~2.2"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^8.5 || ^9",
-                "react/event-loop": "^1.0 || ^0.5 || ^0.4.2",
-                "satooshi/php-coveralls": "~1.0"
-            },
-            "suggest": {
-                "react/event-loop": "Used for scheduling async operations"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Rx\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Alexander",
-                    "email": "iam.asm89@gmail.com"
-                },
-                {
-                    "name": "David Dan",
-                    "email": "davidwdan@gmail.com"
-                },
-                {
-                    "name": "Matt Bonneau",
-                    "email": "matt@bonneau.net"
-                }
-            ],
-            "description": "Reactive extensions for php.",
-            "homepage": "https://github.com/ReactiveX/RxPHP",
-            "keywords": [
-                "extensions",
-                "reactive",
-                "rx"
-            ],
-            "support": {
-                "issues": "https://github.com/ReactiveX/RxPHP/issues",
-                "source": "https://github.com/ReactiveX/RxPHP/tree/2.0.12"
-            },
-            "time": "2023-11-27T16:37:30+00:00"
-        },
-        {
-            "name": "stella-maris/clock",
-            "version": "0.1.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/stella-maris-solutions/clock.git",
-                "reference": "fa23ce16019289a18bb3446fdecd45befcdd94f8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/stella-maris-solutions/clock/zipball/fa23ce16019289a18bb3446fdecd45befcdd94f8",
-                "reference": "fa23ce16019289a18bb3446fdecd45befcdd94f8",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.0|^8.0",
-                "psr/clock": "^1.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "StellaMaris\\Clock\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Andreas Heigl",
-                    "role": "Maintainer"
-                }
-            ],
-            "description": "A pre-release of the proposed PSR-20 Clock-Interface",
-            "homepage": "https://gitlab.com/stella-maris/clock",
-            "keywords": [
-                "clock",
-                "datetime",
-                "point in time",
-                "psr20"
-            ],
-            "support": {
-                "source": "https://github.com/stella-maris-solutions/clock/tree/0.1.7"
-            },
-            "time": "2022-11-25T16:15:06+00:00"
-        },
-        {
-            "name": "thecodingmachine/safe",
-            "version": "v1.3.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/thecodingmachine/safe.git",
-                "reference": "a8ab0876305a4cdaef31b2350fcb9811b5608dbc"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/thecodingmachine/safe/zipball/a8ab0876305a4cdaef31b2350fcb9811b5608dbc",
-                "reference": "a8ab0876305a4cdaef31b2350fcb9811b5608dbc",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2"
-            },
-            "require-dev": {
-                "phpstan/phpstan": "^0.12",
-                "squizlabs/php_codesniffer": "^3.2",
-                "thecodingmachine/phpstan-strict-rules": "^0.12"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.1-dev"
-                }
-            },
-            "autoload": {
-                "files": [
-                    "deprecated/apc.php",
-                    "deprecated/libevent.php",
-                    "deprecated/mssql.php",
-                    "deprecated/stats.php",
-                    "lib/special_cases.php",
-                    "generated/apache.php",
-                    "generated/apcu.php",
-                    "generated/array.php",
-                    "generated/bzip2.php",
-                    "generated/calendar.php",
-                    "generated/classobj.php",
-                    "generated/com.php",
-                    "generated/cubrid.php",
-                    "generated/curl.php",
-                    "generated/datetime.php",
-                    "generated/dir.php",
-                    "generated/eio.php",
-                    "generated/errorfunc.php",
-                    "generated/exec.php",
-                    "generated/fileinfo.php",
-                    "generated/filesystem.php",
-                    "generated/filter.php",
-                    "generated/fpm.php",
-                    "generated/ftp.php",
-                    "generated/funchand.php",
-                    "generated/gmp.php",
-                    "generated/gnupg.php",
-                    "generated/hash.php",
-                    "generated/ibase.php",
-                    "generated/ibmDb2.php",
-                    "generated/iconv.php",
-                    "generated/image.php",
-                    "generated/imap.php",
-                    "generated/info.php",
-                    "generated/ingres-ii.php",
-                    "generated/inotify.php",
-                    "generated/json.php",
-                    "generated/ldap.php",
-                    "generated/libxml.php",
-                    "generated/lzf.php",
-                    "generated/mailparse.php",
-                    "generated/mbstring.php",
-                    "generated/misc.php",
-                    "generated/msql.php",
-                    "generated/mysql.php",
-                    "generated/mysqli.php",
-                    "generated/mysqlndMs.php",
-                    "generated/mysqlndQc.php",
-                    "generated/network.php",
-                    "generated/oci8.php",
-                    "generated/opcache.php",
-                    "generated/openssl.php",
-                    "generated/outcontrol.php",
-                    "generated/password.php",
-                    "generated/pcntl.php",
-                    "generated/pcre.php",
-                    "generated/pdf.php",
-                    "generated/pgsql.php",
-                    "generated/posix.php",
-                    "generated/ps.php",
-                    "generated/pspell.php",
-                    "generated/readline.php",
-                    "generated/rpminfo.php",
-                    "generated/rrd.php",
-                    "generated/sem.php",
-                    "generated/session.php",
-                    "generated/shmop.php",
-                    "generated/simplexml.php",
-                    "generated/sockets.php",
-                    "generated/sodium.php",
-                    "generated/solr.php",
-                    "generated/spl.php",
-                    "generated/sqlsrv.php",
-                    "generated/ssdeep.php",
-                    "generated/ssh2.php",
-                    "generated/stream.php",
-                    "generated/strings.php",
-                    "generated/swoole.php",
-                    "generated/uodbc.php",
-                    "generated/uopz.php",
-                    "generated/url.php",
-                    "generated/var.php",
-                    "generated/xdiff.php",
-                    "generated/xml.php",
-                    "generated/xmlrpc.php",
-                    "generated/yaml.php",
-                    "generated/yaz.php",
-                    "generated/zip.php",
-                    "generated/zlib.php"
-                ],
-                "psr-4": {
-                    "Safe\\": [
-                        "lib/",
-                        "deprecated/",
-                        "generated/"
-                    ]
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "PHP core functions that throw exceptions instead of returning FALSE on error",
-            "support": {
-                "issues": "https://github.com/thecodingmachine/safe/issues",
-                "source": "https://github.com/thecodingmachine/safe/tree/v1.3.3"
-            },
-            "time": "2020-10-28T17:51:34+00:00"
+            "time": "2025-08-19T18:57:03+00:00"
         },
         {
             "name": "wyrihaximus/constants",
@@ -1082,34 +849,31 @@
                     "type": "github"
                 }
             ],
+            "abandoned": "[...$iteratorOrArray] instead of this",
             "time": "2021-09-05T15:12:30+00:00"
         },
         {
             "name": "wyrihaximus/metrics",
-            "version": "1.1.0",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-metrics.git",
-                "reference": "bb209f20b77401af681c25c9a886e92296c14902"
+                "reference": "56c8dea77e7493119c4cfed7653e06f58e42842f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-metrics/zipball/bb209f20b77401af681c25c9a886e92296c14902",
-                "reference": "bb209f20b77401af681c25c9a886e92296c14902",
+                "url": "https://api.github.com/repos/WyriHaximus/php-metrics/zipball/56c8dea77e7493119c4cfed7653e06f58e42842f",
+                "reference": "56c8dea77e7493119c4cfed7653e06f58e42842f",
                 "shasum": ""
             },
             "require": {
-                "lcobucci/clock": "^2.0",
-                "php": "^7.4 || ^8.0",
-                "react-parallel/object-proxy-attributes": "^1",
-                "thecodingmachine/safe": "^1.1",
-                "wyrihaximus/constants": "^1.5"
+                "lcobucci/clock": "^3.2",
+                "php": "^8.3"
             },
             "require-dev": {
-                "phpbench/phpbench": "^0.17.1 || ^1.0.0",
-                "phpstan/phpstan": "^0.12.99",
-                "vimeo/psalm": "^4.12",
-                "wyrihaximus/test-utilities": "^3.7.4"
+                "phpbench/phpbench": "^1.2.3",
+                "wyrihaximus/makefiles": "^0.3.1",
+                "wyrihaximus/test-utilities": "^7.0.0"
             },
             "type": "library",
             "autoload": {
@@ -1130,7 +894,7 @@
             "description": "🕵️‍♀️ Prometheus modelled metric VO's and registry",
             "support": {
                 "issues": "https://github.com/WyriHaximus/php-metrics/issues",
-                "source": "https://github.com/WyriHaximus/php-metrics/tree/1.1.0"
+                "source": "https://github.com/WyriHaximus/php-metrics/tree/3.0.0"
             },
             "funding": [
                 {
@@ -1138,29 +902,28 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-11-10T16:03:58+00:00"
+            "time": "2025-04-28T11:50:53+00:00"
         },
         {
             "name": "wyrihaximus/pool-info",
-            "version": "1.0.0",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-pool-info.git",
-                "reference": "db15fa8e327ab23414f2686d9c22c3fef2475613"
+                "reference": "23df6dcf9c9aea1099a9af31af56f3723273f03d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-pool-info/zipball/db15fa8e327ab23414f2686d9c22c3fef2475613",
-                "reference": "db15fa8e327ab23414f2686d9c22c3fef2475613",
+                "url": "https://api.github.com/repos/WyriHaximus/php-pool-info/zipball/23df6dcf9c9aea1099a9af31af56f3723273f03d",
+                "reference": "23df6dcf9c9aea1099a9af31af56f3723273f03d",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.3",
-                "wyrihaximus/constants": "^1.2",
+                "php": "^8.2",
                 "wyrihaximus/iterator-or-array-to-array": "^1.1"
             },
             "require-dev": {
-                "wyrihaximus/test-utilities": "^1.2"
+                "wyrihaximus/test-utilities": "^5.6"
             },
             "type": "library",
             "autoload": {
@@ -1181,15 +944,21 @@
             "description": "Interface for pool info metrics",
             "support": {
                 "issues": "https://github.com/WyriHaximus/php-pool-info/issues",
-                "source": "https://github.com/WyriHaximus/php-pool-info/tree/1.0.0"
+                "source": "https://github.com/WyriHaximus/php-pool-info/tree/2.0.0"
             },
-            "time": "2019-09-27T06:28:08+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/WyriHaximus",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-11-15T21:37:49+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
@@ -1199,5 +968,5 @@
         "ext-pcov": "*",
         "ext-xdebug": "*"
     },
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.9.0"
 }
