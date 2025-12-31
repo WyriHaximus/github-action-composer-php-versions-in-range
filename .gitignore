@@ -1,0 +1,3 @@
+vendor
+situations/**/vendor
+situations/another-working-directory/composer.lock
