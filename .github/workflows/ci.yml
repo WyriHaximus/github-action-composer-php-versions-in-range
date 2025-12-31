@@ -31,8 +31,8 @@ jobs:
             os: ubuntu-latest
           - workingDirectory: "situations/ext-parallel-composer.lock/"
             highestUpcoming: "8.5"
-            nightly: "8.4"
-            highest: "8.4"
+            nightly: "8.5"
+            highest: "8.5"
             lowest: "8.2"
             extensions: "parallel,pcov,xdebug"
             requiredExtensions: "parallel"
@@ -40,8 +40,8 @@ jobs:
             os: ubuntu-latest
           - workingDirectory: "situations/wyrihaximus-test-utilities-composer.lock/"
             highestUpcoming: "8.5"
-            nightly: "8.4"
-            highest: "8.4"
+            nightly: "8.5"
+            highest: "8.5"
             lowest: "8.2"
             extensions: "bcmath,ctype,dom,filter,intl,json,libxml,mbstring,openssl,pcov,pcre,phar,reflection,simplexml,sodium,spl,tokenizer,xdebug,xml,xmlwriter"
             requiredExtensions: "bcmath,ctype,dom,filter,intl,json,libxml,mbstring,openssl,pcre,phar,reflection,simplexml,sodium,spl,tokenizer,xml,xmlwriter"
@@ -49,8 +49,8 @@ jobs:
             os: ubuntu-latest
           - workingDirectory: "situations/wyrihaximus-react-phpunit-run-tests-in-fiber-composer.lock/"
             highestUpcoming: "8.5"
-            nightly: "8.4"
-            highest: "8.4"
+            nightly: "8.5"
+            highest: "8.5"
             lowest: "8.2"
             extensions: "bcmath,ctype,dom,filter,intl,json,libxml,mbstring,openssl,pcre,phar,reflection,simplexml,sodium,spl,tokenizer,xml,xmlwriter"
             requiredExtensions: ""
@@ -65,9 +65,9 @@ jobs:
         highestUpcoming:
           - "8.5"
         nightly:
-          - "8.4"
+          - "8.5"
         highest:
-          - "8.4"
+          - "8.5"
         lowest:
           - "7.3"
         extensions:
