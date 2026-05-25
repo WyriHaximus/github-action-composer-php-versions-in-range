@@ -9,7 +9,8 @@ This action supports the following option.
 ### upcomingReleases
 
 Will include the next upcoming major or minor PHP release. Looking for more bleeding edge, `nightly` will hold the
-same value from the release day of the previous `X.Y.0` release. Currently, that is  nothing.
+same value from the release day of the previous `X.Y.0` release. Currently, that is {% if upcoming == null %} nothing.{% else %}: `{{ upcoming }}`.{% endif %}
+
 * *Required*: `No`
 * *Type*: `Boolean`
 * *Default*: `false`
@@ -17,7 +18,8 @@ same value from the release day of the previous `X.Y.0` release. Currently, that
 
 ### nightly
 
-Will include the nightly of the next new major or minor PHP release. Currently, that is : `8.5`.
+Will include the nightly of the next new major or minor PHP release. Currently, that is {% if nightly == null %} nothing.{% else %}: `{{ nightly }}`.{% endif %}
+
 * *Required*: `No`
 * *Type*: `Boolean`
 * *Default*: `false`
@@ -36,8 +38,8 @@ The `nightly` and `upcomingReleases` change depending on how close we are to the
 
 | Input              | Current value    | Gets updated                                                             |
 |--------------------|------------------|--------------------------------------------------------------------------|
-| `nightly`          | `8.5`  | When the first nightly of the next major/minor PHP version is out        |
-| `upcomingReleases` |  | When the first image of the next major/minor PHP version is out through https://github.com/WyriHaximusNet/docker-php |
+| `nightly`          | {% if nightly == null %}{% else %}`{{ nightly }}`{% endif %}  | When the first nightly of the next major/minor PHP version is out        |
+| `upcomingReleases` | {% if upcoming == null %}{% else %}`{{ upcoming }}`{% endif %} | When the first image of the next major/minor PHP version is out through https://github.com/WyriHaximusNet/docker-php |
 
 ## Output
 
@@ -72,30 +74,30 @@ jobs:
     name: Supported Versions Matrix
     runs-on: ubuntu-latest
     outputs:
-      extensions: ${{ steps.supported-versions-matrix.outputs.extensions }}
-      version: ${{ steps.supported-versions-matrix.outputs.version }}
+      extensions: {{ "${{" }} steps.supported-versions-matrix.outputs.extensions }}
+      version: {{ "${{" }} steps.supported-versions-matrix.outputs.version }}
     steps:
       - uses: actions/checkout@v3
       - id: supported-versions-matrix
         uses: WyriHaximus/github-action-composer-php-versions-in-range@v1
   tests:
-    name: PHP ${{ matrix.php }} Latest
+    name: PHP {{ "${{" }} matrix.php }} Latest
     runs-on: ubuntu-latest
     needs:
       - supported-versions-matrix
     strategy:
       matrix:
-        php: ${{ fromJson(needs.supported-versions-matrix.outputs.version) }}
+        php: {{ "${{" }} fromJson(needs.supported-versions-matrix.outputs.version) }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ matrix.php }}
+          php-version: {{ "${{" }} matrix.php }}
           tools: composer
           coverage: none
-          extensions: ${{ join(fromJson(needs.supported-versions-matrix.outputs.extensions), ',') }}
+          extensions: {{ "${{" }} join(fromJson(needs.supported-versions-matrix.outputs.extensions), ',') }}
       - name: Install dependencies
         uses: ramsey/composer-install@v2
       - name: Execute tests

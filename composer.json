@@ -1,10 +1,11 @@
 {
-  "require": {
-    "php": "^9 || ^8 || ^7.3",
-    "ext-ast": "*"
-  },
-  "require-dev": {
-    "ext-pcov": "*",
-    "ext-xdebug": "*"
-  }
+    "require": {
+        "php": "^8.3",
+        "ext-opentelemetry": "*",
+        "wyrihaximus/simple-twig": "^2.3.0",
+        "symfony/yaml": "^8.0"
+    },
+    "require-dev": {
+        "ext-xdebug": "*"
+    }
 }
