@@ -5,8 +5,23 @@ on:
       - 'main'
   pull_request:
 jobs:
+  load-version-data:
+    name: Load version data
+    outputs:
+      highestUpcoming: ${{ steps.versionsinrange.outputs.highestUpcoming }}
+      nightly: ${{ steps.versionsinrange.outputs.nightly }}
+      highest: ${{ steps.versionsinrange.outputs.highest }}
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Load version data
+        id: versionsinrange
+        run: |
+          php etc/load-version-data.php
   get-supported-php-versions:
     name: Test Composer PHP versions in range Tag on ${{ matrix.os }} in ${{ matrix.workingDirectory }}
+    needs:
+      - load-version-data
     strategy:
       fail-fast: false
       matrix:
@@ -30,27 +45,27 @@ jobs:
             requiredDevExtensions: "pcov,xdebug"
             os: ubuntu-latest
           - workingDirectory: "situations/ext-parallel-composer.lock/"
-            highestUpcoming: "8.5"
-            nightly: "8.6"
-            highest: "8.5"
+            highestUpcoming: ${{ needs.load-version-data.outputs.highestUpcoming }}
+            nightly: ${{ needs.load-version-data.outputs.nightly }}
+            highest: ${{ needs.load-version-data.outputs.highest }}
             lowest: "8.2"
             extensions: "parallel,pcov,xdebug"
             requiredExtensions: "parallel"
             requiredDevExtensions: "pcov,xdebug"
             os: ubuntu-latest
           - workingDirectory: "situations/wyrihaximus-test-utilities-composer.lock/"
-            highestUpcoming: "8.5"
-            nightly: "8.6"
-            highest: "8.5"
+            highestUpcoming: ${{ needs.load-version-data.outputs.highestUpcoming }}
+            nightly: ${{ needs.load-version-data.outputs.nightly }}
+            highest: ${{ needs.load-version-data.outputs.highest }}
             lowest: "8.2"
             extensions: "bcmath,ctype,dom,filter,intl,json,libxml,mbstring,openssl,pcov,pcre,phar,reflection,simplexml,sodium,spl,tokenizer,xdebug,xml,xmlwriter"
             requiredExtensions: "bcmath,ctype,dom,filter,intl,json,libxml,mbstring,openssl,pcre,phar,reflection,simplexml,sodium,spl,tokenizer,xml,xmlwriter"
             requiredDevExtensions: "pcov,xdebug"
             os: ubuntu-latest
           - workingDirectory: "situations/wyrihaximus-react-phpunit-run-tests-in-fiber-composer.lock/"
-            highestUpcoming: "8.5"
-            nightly: "8.6"
-            highest: "8.5"
+            highestUpcoming: ${{ needs.load-version-data.outputs.highestUpcoming }}
+            nightly: ${{ needs.load-version-data.outputs.nightly }}
+            highest: ${{ needs.load-version-data.outputs.highest }}
             lowest: "8.2"
             extensions: "bcmath,ctype,dom,filter,intl,json,libxml,mbstring,openssl,pcre,phar,reflection,simplexml,sodium,spl,tokenizer,xml,xmlwriter"
             requiredExtensions: ""
@@ -63,11 +78,11 @@ jobs:
         workingDirectory:
           - ""
         highestUpcoming:
-          - "8.5"
+          - ${{ needs.load-version-data.outputs.highestUpcoming }}
         nightly:
-          - "8.6"
+          - ${{ needs.load-version-data.outputs.nightly }}
         highest:
-          - "8.5"
+          - ${{ needs.load-version-data.outputs.highest }}
         lowest:
           - "8.3"
         extensions:
