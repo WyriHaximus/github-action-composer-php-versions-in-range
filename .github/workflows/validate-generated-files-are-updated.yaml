@@ -1,4 +1,4 @@
-name: Ensure README is up to date
+name: Validate generated files are updated
 on:
   push:
     branches:
@@ -37,3 +37,28 @@ jobs:
           notify_issue: "failure"
           sticky_comment: true
           title: README
+  ensure-main-is-up-to-date:
+    name: Ensure main.js is up to date
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/wyrihaximusnet/php:8.5-nts-alpine-dev-root
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Move current main.js
+        run: |
+          mv main.js main.current.js
+      - name: Generate main.js
+        run: |
+          make generate
+      - name: Check that the files are the exact same
+        uses: LouisBrunner/diff-action@v2.2.0
+        with:
+          old: main.current.js
+          new: main.js
+          mode: strict
+          tolerance: same
+          token: ${{ secrets.GITHUB_TOKEN }}
+          notify_check: true
+          notify_issue: "failure"
+          sticky_comment: true
+          title: main.js
