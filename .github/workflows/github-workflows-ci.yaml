@@ -1,0 +1,39 @@
+name: Ensure README is up to date
+on:
+  push:
+    branches:
+      - 'main'
+      - 'master'
+      - 'refs/heads/r[0-9]+'
+  pull_request:
+## This workflow needs the `pull-request` permissions to work for the package diffing
+## Refs: https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#permissions
+permissions:
+  pull-requests: write
+  checks: write
+jobs:
+  ensure-readme-is-up-to-date:
+    name: Ensure README is up to date
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/wyrihaximusnet/php:8.5-nts-alpine-dev-root
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Move current README
+        run: |
+          mv README.md README.current.md
+      - name: Generate README.md
+        run: |
+          make generate
+      - name: Check that the files are the exact same
+        uses: LouisBrunner/diff-action@v2.2.0
+        with:
+          old: README.current.md
+          new: README.md
+          mode: strict
+          tolerance: same
+          token: ${{ secrets.GITHUB_TOKEN }}
+          notify_check: true
+          notify_issue: "failure"
+          sticky_comment: true
+          title: README
