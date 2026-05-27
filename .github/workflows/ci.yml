@@ -49,8 +49,8 @@ jobs:
             nightly: ${{ needs.load-version-data.outputs.nightly }}
             highest: ${{ needs.load-version-data.outputs.highest }}
             lowest: "8.2"
-            extensions: "parallel,pcov,xdebug"
-            requiredExtensions: "parallel"
+            extensions: "parallel,pcov,random,xdebug"
+            requiredExtensions: "parallel,random"
             requiredDevExtensions: "pcov,xdebug"
             os: ubuntu-latest
           - workingDirectory: "situations/wyrihaximus-test-utilities-composer.lock/"
