@@ -1,7 +1,7 @@
 {
   "require": {
     "php": "^8.2",
-    "wyrihaximus/test-utilities": "^11"
+    "wyrihaximus/test-utilities": "^12"
   },
   "require-dev": {
     "ext-pcov": "*",
