@@ -26,7 +26,7 @@ jobs:
         run: |
           make generate
       - name: Check that the files are the exact same
-        uses: LouisBrunner/diff-action@v2.2.0
+        uses: LouisBrunner/diff-action@ab382b451dbb2333cbb4db158d211d07fb5c82c6 # v3.0.0
         with:
           old: README.current.md
           new: README.md
@@ -51,7 +51,7 @@ jobs:
         run: |
           make generate
       - name: Check that the files are the exact same
-        uses: LouisBrunner/diff-action@v2.2.0
+        uses: LouisBrunner/diff-action@ab382b451dbb2333cbb4db158d211d07fb5c82c6 # v3.0.0
         with:
           old: main.current.js
           new: main.js
