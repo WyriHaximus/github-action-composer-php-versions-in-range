@@ -1,0 +1,7 @@
+parameters:
+	level: max
+	paths:
+		- ../../etc
+		- ../../src
+		- ../../tests
+		- ../../bin

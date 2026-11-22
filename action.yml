@@ -16,21 +16,21 @@ inputs:
     required: false
 outputs:
   highest:
-    description: 'The highest version found in range'
+    description: 'The highest version in range'
   lowest:
-    description: 'The lowest version found in range'
+    description: 'The lowest version in range'
   version:
-    description: 'The versions found in range'
+    description: 'The versions in range'
   upcoming:
-    description: 'The upcoming version found in range, if any'
+    description: 'The upcoming version in range, if any'
   nightly:
-    description: 'The nightly version found in range, if any'
+    description: 'The nightly version in range, if any'
   extensions:
-    description: 'The PHP extensions found in require and require-dev'
+    description: 'The PHP extensions from require and require-dev'
   requiredExtensions:
-    description: 'The PHP extensions found in require only'
+    description: 'The PHP extensions from require only'
   requiredDevExtensions:
-    description: 'The PHP extensions found in require-dev only'
+    description: 'The PHP extensions from require-dev only'
 runs:
   using: 'node24'
   main: 'main.js'

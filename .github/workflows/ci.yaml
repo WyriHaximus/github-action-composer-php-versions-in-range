@@ -14,10 +14,20 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Get desired PHP version
+        id: php-version
+        uses: ./
+      - name: Install PHP
+        uses: shivammathur/setup-php@eb7c497e18156a6bbabfef1d3a82760b9eda3962 # 2.40.0
+        with:
+          php-version: ${{ steps.php-version.outputs.lowest }}
+          tools: composer
+          coverage: none
+      - uses: ramsey/composer-install@65e4f84970763564f46a70b8a54b90d033b3bdda # 4.0.0
       - name: Load version data
         id: versionsinrange
         run: |
-          php etc/load-version-data.php
+          php bin/load-version-data.php
   get-supported-php-versions:
     name: Test Composer PHP versions in range Tag on ${{ matrix.os }} in ${{ matrix.workingDirectory }}
     needs:
