@@ -1,12 +1,30 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "local>WyriHaximus/renovate-config"
-  ],
-  "composer": {
-    "ignorePaths": [
-      "**/situations/**",
-      "**/situations/**",
-    ]
-  }
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": [
+        "github>WyriHaximus/renovate-config:php-package"
+    ],
+    "composer": {
+        "ignorePaths": [
+            "**/situations/**"
+        ]
+    },
+    "customManagers": [
+        {
+            "customType": "regex",
+            "managerFilePatterns": [
+                "/^etc\\/php-src-ref\\.txt$/"
+            ],
+            "matchStrings": [
+                "(?<currentDigest>[a-f0-9]{40})"
+            ],
+            "currentValueTemplate": "master",
+            "depNameTemplate": "php/php-src",
+            "packageNameTemplate": "https://github.com/php/php-src",
+            "datasourceTemplate": "git-refs"
+        }
+    ],
+    "constraints": {
+        "php": "8.5.x",
+        "composer": "2.x"
+    }
 }

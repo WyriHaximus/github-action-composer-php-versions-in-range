@@ -1,11 +1,47 @@
 {
-    "require": {
-        "php": "^8.3",
-        "ext-opentelemetry": "*",
-        "wyrihaximus/simple-twig": "^2.3.0",
-        "symfony/yaml": "^8.0"
+  "name": "wyrihaximus/github-action-composer-php-versions-in-range",
+  "description": "GitHub Action for determining Composer PHP versions in range",
+  "license": "MIT",
+  "require": {
+    "php": "^8.5",
+    "wyrihaximus/simple-twig": "^2.3.0"
+  },
+  "require-dev": {
+    "wyrihaximus/makefiles": "^0.15.8",
+    "wyrihaximus/test-utilities": "^14.8.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "WyriHaximus\\GitHubAction\\ComposerPhpVersionsInRange\\": "src/"
     },
-    "require-dev": {
-        "ext-xdebug": "*"
+    "files": [
+      "src/VersionDataUpdater.php"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "WyriHaximus\\GitHubAction\\ComposerPhpVersionsInRange\\Test\\": "tests/"
     }
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true,
+      "ergebnis/composer-normalize": true,
+      "infection/extension-installer": true,
+      "phpstan/extension-installer": true,
+      "wyrihaximus/makefiles": true,
+      "wyrihaximus/test-utilities": true
+    },
+    "platform": {
+      "php": "8.5.13"
+    }
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "make on-install-or-update || true"
+    ],
+    "post-update-cmd": [
+      "make on-install-or-update || true"
+    ]
+  }
 }
