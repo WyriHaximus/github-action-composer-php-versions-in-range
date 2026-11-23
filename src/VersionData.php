@@ -25,9 +25,6 @@ use const JSON_PRETTY_PRINT;
 use const JSON_THROW_ON_ERROR;
 use const JSON_UNESCAPED_SLASHES;
 
-/**
- * Value object holding PHP version data (released, upcoming, nightly).
- */
 final readonly class VersionData implements JsonSerializable
 {
     /**

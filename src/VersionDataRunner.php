@@ -12,6 +12,7 @@ use function file_exists;
 use function file_get_contents;
 use function file_put_contents;
 use function fileperms;
+use function fwrite;
 use function json_decode;
 use function rename;
 use function strlen;
@@ -20,10 +21,8 @@ use function time;
 use function unlink;
 
 use const JSON_THROW_ON_ERROR;
+use const STDERR;
 
-/**
- * Runs the full version update pipeline: fetch tags, header, check registries, and persist.
- */
 final readonly class VersionDataRunner
 {
     public function __construct(
@@ -45,24 +44,28 @@ final readonly class VersionDataRunner
 
         $data = VersionData::fromJson($existing);
 
+        $this->log('Fetching PHP tags (PHP Watch)...');
         $tags = $this->gitTagFetcher->fetch();
 
-        $header = $this->versionChecker->getHttpClient()->getRequired('https://raw.githubusercontent.com/php/php-src/master/main/php_version.h');
-
-        $updater = new VersionDataUpdater(
-            $this->versionChecker->imageExists(...),
-            $this->versionChecker->nightlyExists(...),
-            time(),
+        $this->log('Fetching PHP version header...');
+        $header = $this->versionChecker->getHttpClient()->getRequired(
+            'https://raw.githubusercontent.com/php/php-src/master/main/php_version.h',
         );
 
+        $updater = new VersionDataUpdater($this->versionChecker, time());
+
+        $this->log('Updating version data...');
         $updated = $updater->update($data, $tags, $header);
 
         $json = $updated->toJson();
 
         if ($updated->jsonSerialize() === json_decode($existing, true, 512, JSON_THROW_ON_ERROR)) {
+            $this->log('No changes detected, skipping write.');
+
             return;
         }
 
+        $this->log('Writing versions.json...');
         $temp = tempnam(dirname($path), '.versions-');
         if ($temp === false) {
             throw new RuntimeException('Cannot create temporary version file');
@@ -83,5 +86,12 @@ final readonly class VersionDataRunner
                 unlink($temp);
             }
         }
+
+        $this->log('Done.');
+    }
+
+    private function log(string $message): void
+    {
+        fwrite(STDERR, $message . "\n");
     }
 }

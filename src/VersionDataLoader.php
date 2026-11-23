@@ -18,9 +18,6 @@ use function usort;
 use const FILE_APPEND;
 use const JSON_THROW_ON_ERROR;
 
-/**
- * Loads version data from versions.json and outputs highest/highestUpcoming/nightly versions.
- */
 final readonly class VersionDataLoader
 {
     public function __construct(
@@ -28,13 +25,10 @@ final readonly class VersionDataLoader
     ) {
     }
 
-    /**
-     * Get the highest released version.
-     */
     public function getHighest(): string
     {
         $data = $this->loadVersionData();
-        usort($data['released'], versionCompareSort(...));
+        usort($data['released'], VersionHelpers::compareSort(...));
 
         /** @var string $highest */
         $highest = end($data['released']);
@@ -42,14 +36,11 @@ final readonly class VersionDataLoader
         return $highest;
     }
 
-    /**
-     * Get the highest upcoming version (excluding released).
-     */
     public function getHighestUpcoming(): string
     {
         $data       = $this->loadVersionData();
         $unreleased = array_values(array_diff($data['upcoming'], $data['released']));
-        usort($unreleased, versionCompareSort(...));
+        usort($unreleased, VersionHelpers::compareSort(...));
 
         if (count($unreleased) > 0) {
             /** @var string $highest */
@@ -58,7 +49,7 @@ final readonly class VersionDataLoader
             return $highest;
         }
 
-        usort($data['released'], versionCompareSort(...));
+        usort($data['released'], VersionHelpers::compareSort(...));
 
         /** @var string $highest */
         $highest = end($data['released']);
@@ -66,14 +57,11 @@ final readonly class VersionDataLoader
         return $highest;
     }
 
-    /**
-     * Get the highest nightly version (excluding released).
-     */
     public function getNightly(): string
     {
         $data       = $this->loadVersionData();
         $unreleased = array_values(array_diff($data['nightly'], $data['released']));
-        usort($unreleased, versionCompareSort(...));
+        usort($unreleased, VersionHelpers::compareSort(...));
 
         if (count($unreleased) > 0) {
             /** @var string $highest */
@@ -82,7 +70,7 @@ final readonly class VersionDataLoader
             return $highest;
         }
 
-        usort($data['released'], versionCompareSort(...));
+        usort($data['released'], VersionHelpers::compareSort(...));
 
         /** @var string $highest */
         $highest = end($data['released']);
@@ -90,9 +78,6 @@ final readonly class VersionDataLoader
         return $highest;
     }
 
-    /**
-     * Output version data to a file or stdout as GitHub Actions-compatible format.
-     */
     public function output(string $outputPath = 'php://stdout'): void
     {
         $target = $outputPath;

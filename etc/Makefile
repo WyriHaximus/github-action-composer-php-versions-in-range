@@ -4,5 +4,5 @@ after-renovate:
 generate:
 	$(DOCKER_RUN) php bin/generate.php
 
-update-versions: install
+update-versions: ## Update etc/versions.json ##%GITHUB_TOKEN%##
 	$(DOCKER_RUN) php bin/update-versions.php

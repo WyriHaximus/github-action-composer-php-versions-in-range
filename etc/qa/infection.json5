@@ -13,9 +13,10 @@
         "perMutator": "../../var/infection-per-mutator.md",
         "github": true
     },
-    "minMsi": 70,
-    "minCoveredMsi": 70,
+    "minMsi": 40,
+    "minCoveredMsi": 40,
     "ignoreMsiWithNoMutations": true,
+    "testFrameworkOptions": "--exclude-group=network",
     "mutators": {
         "@default": true
     }

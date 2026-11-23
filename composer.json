@@ -4,19 +4,17 @@
   "license": "MIT",
   "require": {
     "php": "^8.5",
-    "wyrihaximus/simple-twig": "^2.3.0"
+    "react/http": "^1.12.0",
+    "wyrihaximus/simple-twig": "^2.4.0"
   },
   "require-dev": {
-    "wyrihaximus/makefiles": "^0.15.8",
-    "wyrihaximus/test-utilities": "^14.8.0"
+    "wyrihaximus/async-test-utilities": "^14.8.0",
+    "wyrihaximus/makefiles": "^0.16.0"
   },
   "autoload": {
     "psr-4": {
       "WyriHaximus\\GitHubAction\\ComposerPhpVersionsInRange\\": "src/"
-    },
-    "files": [
-      "src/VersionDataUpdater.php"
-    ]
+    }
   },
   "autoload-dev": {
     "psr-4": {

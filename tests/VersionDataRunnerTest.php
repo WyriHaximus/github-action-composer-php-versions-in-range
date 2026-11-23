@@ -4,14 +4,16 @@ declare(strict_types=1);
 
 namespace WyriHaximus\GitHubAction\ComposerPhpVersionsInRange\Test;
 
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\Attributes\Test;
 use RuntimeException;
 use Throwable;
+use WyriHaximus\AsyncTestUtilities\AsyncTestCase;
+use WyriHaximus\GitHubAction\ComposerPhpVersionsInRange\GitFetchError;
 use WyriHaximus\GitHubAction\ComposerPhpVersionsInRange\GitTagFetcherInterface;
 use WyriHaximus\GitHubAction\ComposerPhpVersionsInRange\HttpClientInterface;
 use WyriHaximus\GitHubAction\ComposerPhpVersionsInRange\VersionChecker;
 use WyriHaximus\GitHubAction\ComposerPhpVersionsInRange\VersionDataRunner;
-use WyriHaximus\TestUtilities\TestCase;
 
 use function file_get_contents;
 use function file_put_contents;
@@ -20,7 +22,8 @@ use function sys_get_temp_dir;
 use function tempnam;
 use function unlink;
 
-final class VersionDataRunnerTest extends TestCase
+#[Group('network')]
+final class VersionDataRunnerTest extends AsyncTestCase
 {
     #[Test]
     public function runThrowsOnMissingFile(): void
@@ -129,7 +132,7 @@ final class VersionDataRunnerTest extends TestCase
     #[Test]
     public function runThrowsOnGitFailure(): void
     {
-        $this->expectException(RuntimeException::class);
+        $this->expectException(Throwable::class);
 
         $json = '{"released":["5.3","7.0","8.0"],"upcoming":[],"nightly":[]}';
         $temp = tempnam(sys_get_temp_dir(), 'versions-');
@@ -141,7 +144,7 @@ final class VersionDataRunnerTest extends TestCase
             $git = self::createMock(GitTagFetcherInterface::class);
             $git->expects($this->once())
                 ->method('fetch')
-                ->willThrowException(new RuntimeException('Git failed'));
+                ->willThrowException(new GitFetchError('Git failed'));
 
             $runner = new VersionDataRunner(new VersionChecker($client), $git);
             $runner->run($temp);

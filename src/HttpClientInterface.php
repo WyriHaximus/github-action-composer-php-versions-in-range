@@ -4,13 +4,10 @@ declare(strict_types=1);
 
 namespace WyriHaximus\GitHubAction\ComposerPhpVersionsInRange;
 
-/**
- * Handles HTTP GET requests with headers.
- */
 interface HttpClientInterface
 {
     /**
-     * @param list<string> $headers
+     * @param array<string, string> $headers
      *
      * @return array{int, string}
      */
