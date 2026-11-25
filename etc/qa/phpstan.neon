@@ -5,3 +5,36 @@ parameters:
 		- ../../src
 		- ../../tests
 		- ../../bin
+	ignoreErrors:
+		-
+			identifier: staticMethod.alreadyNarrowedType
+			path: ../../tests/GitTagFetcherTest.php
+		-
+			identifier: staticMethod.alreadyNarrowedType
+			path: ../../tests/HttpClientTest.php
+		-
+			identifier: ergebnis.noExtends
+			path: ../../src/GitFetchError.php
+		-
+			identifier: ergebnis.noExtends
+			path: ../../src/HttpError.php
+		-
+			identifier: ergebnis.final
+			path: ../../src/HttpError.php
+		-
+			identifier: ergebnis.noExtends
+			path: ../../src/TransientHttpError.php
+		-
+			identifier: wyrihaximus.reactphp.blocking.function.fileGetContents
+		-
+			identifier: wyrihaximus.reactphp.blocking.function.filePutContents
+		-
+			identifier: wyrihaximus.reactphp.blocking.function.fileExists
+		-
+			identifier: wyrihaximus.reactphp.blocking.function.isFile
+		-
+			identifier: wyrihaximus.reactphp.blocking.function.isDir
+		-
+			identifier: wyrihaximus.reactphp.blocking.function.mkdir
+		-
+			identifier: wyrihaximus.reactphp.blocking.function.fwrite

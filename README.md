@@ -6,10 +6,11 @@ GitHub Action that gets the PHP versions in range from composer.json
 
 This action supports the following option.
 
-### upcomingReleases
+### `upcomingReleases`
 
 Will include the next upcoming major or minor PHP release. For earlier builds, use `nightly`.
-Currently, that is  nothing.
+The upcoming release list is empty.
+
 * *Required*: `No`
 * *Type*: `Boolean`
 * *Default*: `false`
@@ -17,13 +18,13 @@ Currently, that is  nothing.
 
 ### nightly
 
-Will include the nightly of the next new major or minor PHP release. Currently, that is : `8.7`.
+Will include the nightly of the next new major or minor PHP release. The current version is `8.7`.
 * *Required*: `No`
 * *Type*: `Boolean`
 * *Default*: `false`
 * *Example*: `true` for including the nightly of the next new major or minor releases
 
-### workingDirectory
+### `workingDirectory`
 
 Set a different than the root directory to look for `composer.json`
 
@@ -38,13 +39,13 @@ Renovate's `make after-renovate` task refreshes version data. The system retains
 upstream tags. A development version enters `nightly` when the `setup-php` builder publishes a Linux binary.
 Once the system observes the `nts-alpine-dev` image from `ghcr.io/wyrihaximusnet/php` for at least
 24 hours, it moves to `upcoming`; the system removes released versions from both lists. The system records
-image first-observed times in `etc/versions.json`, so promotion occurs only on a later refresh after that
+image first-observed times in `etc/versions.json`, so a later refresh promotes versions after that
 observation. Run `php bin/update-versions.php` followed by `make generate` to refresh locally; Renovate
 refreshes on dependency updates, not on a fixed schedule.
 
 | Input              | Current value    | Gets updated                                                             |
 |--------------------|------------------|--------------------------------------------------------------------------|
-| `nightly`          | `8.6`  | When the first nightly of the next major/minor PHP version is out        |
+| `nightly`          | `8.7`  | When the first nightly of the next major/minor PHP version is out        |
 | `upcomingReleases` |  | At least 24 hours after [docker-php](https://github.com/WyriHaximusNet/docker-php) first observes an image |
 
 ## Output

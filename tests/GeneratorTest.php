@@ -190,7 +190,7 @@ final class GeneratorTest extends TestCase
 
         $main = file_get_contents($this->tempDir . '/main.js');
         self::assertNotFalse($main);
-        // array_values ensures numeric keys: ["8.2"] not {"0":"8.2"}
+        // array_values ensures numeric keys: `["8.2"]` instead of `{"0":"8.2"}`
         self::assertStringContainsString('&quot;8.2&quot;', $main);
         self::assertStringContainsString('&quot;8.3&quot;', $main);
     }

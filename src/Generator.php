@@ -17,9 +17,6 @@ use function WyriHaximus\Twig\render;
 
 use const JSON_THROW_ON_ERROR;
 
-/**
- * Generates README.md and main.js from versions.json using Twig templates.
- */
 final readonly class Generator
 {
     public function __construct(
@@ -43,7 +40,7 @@ final readonly class Generator
         }
 
         foreach (['released', 'upcoming', 'nightly'] as $category) {
-            usort($versions[$category], versionCompareSort(...));
+            usort($versions[$category], VersionHelpers::compareSort(...));
         }
 
         $readmeTemplate = file_get_contents($this->etcDir . '/README.md.twig');

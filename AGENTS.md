@@ -1,6 +1,6 @@
 # Instruction Economy (check before `every` instruction you add)
 
-Before adding an instruction `anywhere` (`AGENTS.md`s, rules, agents, skills, hooks, configs): prefer the `native` mechanism (frontmatter field, config key, existing rule, a router to the single source) over new prose, and prefer `deleting` prose over adding it. Every added instruction is a contradiction-and-drift surface; condensed copies of another artifact's content drift silently. Success metric: the diff shrinks or holds while capability grows. Consistency beats token thrift.
+Before adding an instruction `anywhere` (`AGENTS.md`s, rules, agents, skills, hooks, configs): prefer the `native` mechanism (frontmatter field, config key, existing rule, a router to the single source) over new prose, and prefer `deleting` prose over adding it. Every added instruction is a contradiction-and-drift surface; condensed copies of another artifact's content create undetected drift. Success metric: the diff shrinks or holds while capability grows. Consistency beats token thrift.
 
 Before doing anything read this file to ensure you are up to date with it.
 
@@ -17,7 +17,7 @@ Before doing anything read this file to ensure you are up to date with it.
 - Need something custom that is not in the list? Use `make run "YOUR COMMAND HERE"` to run a command in the container and run whatever you require there.
 - If a package needs custom `make` commands, put them in `etc/Makefile`, then run `make install` to make them available through the root `Makefile`.
 - Always split tasks up in small chunks and feed those to sub agents, then collect what comes out of that, make logical groups for the next set of tasks to be split over subagents.
-- When using shell commands like `rm`, `mv`, or `cp` and all paths are within the repo, run them via `make run` to ensure they execute inside the container.
+- When using shell commands like `rm`, `mv`, or `cp` for repo paths, invoke them through `make run` so they use the container.
 - When making `API` calls prefer using `MCP` tools over `cURL`.
 
 ## Flow
@@ -29,13 +29,13 @@ Before doing anything read this file to ensure you are up to date with it.
 - If `composer.lock` is out of sync with `composer.json`, run `make update`.
 
 ## Writing code
-- Keep things straightforward, once done implementing a feature, iterate on improving it. Less code is more.
+- Keep implementations clear; after adding a feature, review it for improvements. Less code is more.
 - Make sure the code is readable and clear.
 - Prefer a logical block of code to be within one screen size over splitting it up into smaller functions.
 - Make a class static if it doesn't hold state.
 - Put classes in logical folders.
-- Once done writing code iterate of it to make sure it's clear to understand and maintain, that it's straightforward to test, and that it doesn't duplicate code.
-- Search existing code for examples of how to do things.
+- Review written code for clarity, maintainability, testability, and duplication.
+- Search existing code for examples of established patterns.
 - Search existing code for classes/methods you can use instead of writing your own.
 
 ## Markdown
@@ -62,7 +62,7 @@ Before doing anything read this file to ensure you are up to date with it.
 ## Immutable laws
 - Consistency is the key.
 - Always add regressions to the test suite when fixing bugs or when the user tells you whatever you wrote is still broken.
-- If many parts of the code rely on the same behavior (and data), centralize it in a single place.
+- When code paths share behavior or data, centralize them.
 - Always run `make` before you're returning control to the user.
 - Always apply the boyscout rule: Leave the code better than you found it. But do not touch anything else than what you're touching.
 - Always reload this file before you start processing a new request.

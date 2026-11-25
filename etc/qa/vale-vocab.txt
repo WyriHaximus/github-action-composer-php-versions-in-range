@@ -47,7 +47,6 @@ Collator
 Comment
 CompileError
 Composer
-ComposerPhpVersionsInRange
 Connection
 Countable
 CryptoSafeEngine
@@ -167,7 +166,6 @@ GPBType
 GPBUtil
 Generator
 GitHub
-GitHubAction
 GlobIterator
 Google
 HOURS_PER_DAY
@@ -466,7 +464,6 @@ UrlValidationErrorType
 Vale
 Value
 ValueError
-VersionDataUpdater
 WSL
 WeakMap
 WeakReference
@@ -762,6 +759,7 @@ assertxmlstringnotequalsxmlstring
 assertxmlstringnotequalsxmlstringconsideringcomments
 associate
 async
+async-test-utilities
 at_index
 atan
 atan2
@@ -819,6 +817,7 @@ bzopen
 bzread
 bzwrite
 ca-bundle
+cache
 call_preg
 call_user_func
 call_user_func_array
@@ -894,7 +893,6 @@ composer
 composer-normalize
 composer-require-checker
 composer-unused
-composerphpversionsinrange
 concat
 concurrently
 config
@@ -931,6 +929,7 @@ convert_uudecode
 convert_uuencode
 converted
 copy
+coroutine
 cos
 cosh
 count
@@ -1140,6 +1139,7 @@ defined
 deflate_add
 deflate_init
 deg2rad
+delay
 delete_directory
 delete_file
 dependency-injection
@@ -1164,6 +1164,7 @@ disk_total_space
 diskfreespace
 div
 dl
+dns
 dns_check_record
 dns_get_mx
 dns_get_record
@@ -1260,6 +1261,7 @@ error_reporting
 escape_argument
 escapeshellarg
 escapeshellcmd
+evenement
 event-loop
 every_match
 exactly
@@ -1288,6 +1290,7 @@ fgetc
 fgetcsv
 fgets
 fidry
+fig
 file
 file-filter
 file_exists
@@ -1498,7 +1501,6 @@ gettype
 ghcr
 git-state
 github-action-composer-php-versions-in-range
-githubaction
 glob
 global-state
 gmdate
@@ -1640,12 +1642,16 @@ highlight_file
 highlight_string
 hmac
 hook
+hooks
 hrtime
 html
 html_entity_decode
 htmlentities
 htmlspecialchars
 htmlspecialchars_decode
+http
+http-message
+http-message-util
 http_build_query
 http_clear_last_response_headers
 http_get_last_response_headers
@@ -2544,6 +2550,7 @@ pack
 package-versions
 pad_left
 pad_right
+parallel
 parse
 parse_ini_file
 parse_ini_string
@@ -2746,6 +2753,7 @@ phpstan-mockery
 phpstan-no-safe
 phpstan-phpunit
 phpstan-psr3
+phpstan-react
 phpstan-rules
 phpstan-rules-wrapper
 phpstan-strict-rules
@@ -2949,6 +2957,7 @@ range
 rawurldecode
 rawurlencode
 react
+react-phpunit-run-tests-in-fiber
 read
 read_directory
 read_symbolic_link
@@ -3162,6 +3171,7 @@ sizeof
 sleep
 slevomat
 slice
+socket
 socket_accept
 socket_addrinfo_bind
 socket_addrinfo_connect
@@ -3409,6 +3419,7 @@ strchr
 strcmp
 strcoll
 strcspn
+stream
 stream_bucket_append
 stream_bucket_make_writeable
 stream_bucket_new
@@ -3827,13 +3838,12 @@ vector
 verify
 version
 version_compare
-versionallowed
-versioncomparesort
 vfprintf
 vhosts
 virtual
 vprintf
 vsprintf
+waterfall
 webmozart
 when
 width

@@ -6,13 +6,15 @@ namespace WyriHaximus\GitHubAction\ComposerPhpVersionsInRange\Test;
 
 use PHPUnit\Framework\Attributes\Test;
 use RuntimeException;
+use WyriHaximus\AsyncTestUtilities\AsyncTestCase;
 use WyriHaximus\GitHubAction\ComposerPhpVersionsInRange\HttpClientInterface;
 use WyriHaximus\GitHubAction\ComposerPhpVersionsInRange\VersionChecker;
-use WyriHaximus\TestUtilities\TestCase;
 
 use function json_encode;
+use function React\Async\await;
+use function str_starts_with;
 
-final class VersionCheckerTest extends TestCase
+final class VersionCheckerTest extends AsyncTestCase
 {
     #[Test]
     public function imageExistsReturnsFalseOn404(): void
@@ -21,27 +23,76 @@ final class VersionCheckerTest extends TestCase
         $client->expects($this->once())
             ->method('getRequired')
             ->willReturn(json_encode(['token' => 'test-token']));
-        $client->expects($this->once())
+        $client->expects($this->exactly(2))
             ->method('get')
             ->willReturn([404, '']);
 
         $checker = new VersionChecker($client);
-        self::assertFalse($checker->imageExists('8.5'));
+        self::assertFalse(await($checker->imageExists('8.5')));
     }
 
     #[Test]
-    public function imageExistsReturnsTrueOn200(): void
+    public function imageExistsReturnsTrueOnGhcr200(): void
     {
         $client = self::createMock(HttpClientInterface::class);
         $client->expects($this->once())
             ->method('getRequired')
             ->willReturn(json_encode(['token' => 'test-token']));
-        $client->expects($this->once())
+        $client->expects($this->exactly(2))
             ->method('get')
-            ->willReturn([200, '{}']);
+            ->willReturnOnConsecutiveCalls(
+                [200, '{}'],
+                [404, ''],
+            );
 
         $checker = new VersionChecker($client);
-        self::assertTrue($checker->imageExists('8.5'));
+        self::assertTrue(await($checker->imageExists('8.5')));
+    }
+
+    #[Test]
+    public function imageExistsSendsGhcrAuthorizationAsAStandardHeader(): void
+    {
+        $client = self::createMock(HttpClientInterface::class);
+        $client->expects($this->once())
+            ->method('getRequired')
+            ->willReturn(json_encode(['token' => 'test-token']));
+        $client->expects($this->exactly(2))
+            ->method('get')
+            ->willReturnCallback(static function (string $url, array $headers): array {
+                if (str_starts_with($url, 'https://ghcr.io/')) {
+                    self::assertSame([
+                        'Authorization' => 'Bearer test-token',
+                        'Accept' => 'application/vnd.oci.image.index.v1+json, application/vnd.oci.image.manifest.v1+json, application/vnd.docker.distribution.manifest.list.v2+json, application/vnd.docker.distribution.manifest.v2+json',
+                    ], $headers);
+
+                    return [404, ''];
+                }
+
+                self::assertSame([], $headers);
+
+                return [404, ''];
+            });
+
+        $checker = new VersionChecker($client);
+        self::assertFalse(await($checker->imageExists('8.5')));
+    }
+
+    #[Test]
+    public function imageExistsReturnsTrueOnDockerHub200(): void
+    {
+        $client = self::createMock(HttpClientInterface::class);
+        $client->expects($this->once())
+            ->method('getRequired')
+            ->willReturn(json_encode(['token' => 'test-token']));
+        $client->expects($this->exactly(2))
+            ->method('get')
+            ->willReturnOnConsecutiveCalls(
+                [404, ''],
+                [200, '{}'],
+            );
+
+        $checker = new VersionChecker($client);
+        self::assertTrue(await($checker->imageExists('8.5')));
     }
 
     #[Test]
@@ -51,30 +102,35 @@ final class VersionCheckerTest extends TestCase
         $client->expects($this->once())
             ->method('getRequired')
             ->willReturn(json_encode([]));
+        $client->expects($this->never())
+            ->method('get');
 
         $checker = new VersionChecker($client);
 
         $this->expectException(RuntimeException::class);
         $this->expectExceptionMessageIsOrContains('Invalid registry token');
-        $checker->imageExists('8.5');
+        await($checker->imageExists('8.5'));
     }
 
     #[Test]
-    public function imageExistsThrowsOnNon200Non404(): void
+    public function imageExistsThrowsOnGhcrNon200Non404(): void
     {
         $client = self::createMock(HttpClientInterface::class);
         $client->expects($this->once())
             ->method('getRequired')
             ->willReturn(json_encode(['token' => 'test-token']));
-        $client->expects($this->once())
+        $client->expects($this->exactly(2))
             ->method('get')
-            ->willReturn([500, '']);
+            ->willReturnOnConsecutiveCalls(
+                [500, ''],
+                [404, ''],
+            );
 
         $checker = new VersionChecker($client);
 
         $this->expectException(RuntimeException::class);
-        $this->expectExceptionMessageIsOrContains('Registry returned HTTP 500');
-        $checker->imageExists('8.5');
+        $this->expectExceptionMessageIsOrContains('GHCR returned HTTP 500 for version 8.5');
+        await($checker->imageExists('8.5'));
     }
 
     #[Test]
@@ -124,7 +180,7 @@ final class VersionCheckerTest extends TestCase
         $checker = new VersionChecker($client);
 
         $this->expectException(RuntimeException::class);
-        $this->expectExceptionMessageIsOrContains('Nightly build API returned HTTP 500');
+        $this->expectExceptionMessageIsOrContains('Nightly build API returned HTTP 500 for version 8.5');
         $checker->nightlyExists('8.5');
     }
 

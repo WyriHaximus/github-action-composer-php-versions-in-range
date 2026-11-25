@@ -94,13 +94,13 @@ jobs:
         highest:
           - ${{ needs.load-version-data.outputs.highest }}
         lowest:
-          - "8.3"
+          - "8.5"
         extensions:
-          - "iconv,opentelemetry,xdebug"
+          - "bcmath,ctype,date,dom,filter,hash,iconv,intl,json,libxml,mbstring,openssl,pcre,phar,reflection,simplexml,sodium,tokenizer,xmlwriter"
         requiredExtensions:
-          - "iconv,opentelemetry"
+          - "iconv"
         requiredDevExtensions:
-          - "xdebug"
+          - "bcmath,ctype,date,dom,filter,hash,intl,json,libxml,mbstring,openssl,pcre,phar,reflection,simplexml,sodium,tokenizer,xmlwriter"
     outputs:
       highest: ${{ steps.versionsinrange.outputs.highest }}
       extensions: ${{ steps.versionsinrange.outputs.extensions }}

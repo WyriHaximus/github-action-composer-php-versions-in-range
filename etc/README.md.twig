@@ -6,10 +6,10 @@ GitHub Action that gets the PHP versions in range from composer.json
 
 This action supports the following option.
 
-### upcomingReleases
+### `upcomingReleases`
 
 Will include the next upcoming major or minor PHP release. For earlier builds, use `nightly`.
-Currently, that is {% if upcoming == null %} nothing.{% else %}: `{{ upcoming }}`.{% endif %}
+The upcoming release list is {% if upcoming == null %}empty{% else %}`{{ upcoming }}`{% endif %}.
 
 * *Required*: `No`
 * *Type*: `Boolean`
@@ -18,14 +18,14 @@ Currently, that is {% if upcoming == null %} nothing.{% else %}: `{{ upcoming }}
 
 ### nightly
 
-Will include the nightly of the next new major or minor PHP release. Currently, that is {% if nightly == null %} nothing.{% else %}: `{{ nightly }}`.{% endif %}
+Will include the nightly of the next new major or minor PHP release. {% if nightly == null %}No current version is available.{% else %}The current version is `{{ nightly }}`.{% endif %}
 
 * *Required*: `No`
 * *Type*: `Boolean`
 * *Default*: `false`
 * *Example*: `true` for including the nightly of the next new major or minor releases
 
-### workingDirectory
+### `workingDirectory`
 
 Set a different than the root directory to look for `composer.json`
 
@@ -40,7 +40,7 @@ Renovate's `make after-renovate` task refreshes version data. The system retains
 upstream tags. A development version enters `nightly` when the `setup-php` builder publishes a Linux binary.
 Once the system observes the `nts-alpine-dev` image from `ghcr.io/wyrihaximusnet/php` for at least
 24 hours, it moves to `upcoming`; the system removes released versions from both lists. The system records
-image first-observed times in `etc/versions.json`, so promotion occurs only on a later refresh after that
+image first-observed times in `etc/versions.json`, so a later refresh promotes versions after that
 observation. Run `php bin/update-versions.php` followed by `make generate` to refresh locally; Renovate
 refreshes on dependency updates, not on a fixed schedule.
 

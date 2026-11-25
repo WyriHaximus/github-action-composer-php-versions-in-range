@@ -19,6 +19,8 @@ jobs:
       image: ghcr.io/wyrihaximusnet/php:8.5-nts-alpine-dev-root
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Install dependencies
+        run: make install
       - name: Move current README
         run: |
           mv README.md README.current.md
@@ -44,6 +46,8 @@ jobs:
       image: ghcr.io/wyrihaximusnet/php:8.5-nts-alpine-dev-root
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Install dependencies
+        run: make install
       - name: Move current main.js
         run: |
           mv main.js main.current.js

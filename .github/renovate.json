@@ -24,7 +24,7 @@
         }
     ],
     "constraints": {
-        "php": null,
+        "php": "8.5.x",
         "composer": "2.x"
     }
 }
