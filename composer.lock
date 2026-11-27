@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "21288e74d0aeea3e526899160bbbdcec",
+    "content-hash": "1777cd492037a03fd0a1815caf88978e",
     "packages": [
         {
             "name": "evenement/evenement",
@@ -10244,16 +10244,16 @@
         },
         {
             "name": "wyrihaximus/makefiles",
-            "version": "0.16.0",
+            "version": "0.16.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/Makefiles.git",
-                "reference": "2e432401288982b4a68d4c3f8a109058a0cfb385"
+                "reference": "a2fe72715667eb64ec909b5a5f66d3707946b231"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/Makefiles/zipball/2e432401288982b4a68d4c3f8a109058a0cfb385",
-                "reference": "2e432401288982b4a68d4c3f8a109058a0cfb385",
+                "url": "https://api.github.com/repos/WyriHaximus/Makefiles/zipball/a2fe72715667eb64ec909b5a5f66d3707946b231",
+                "reference": "a2fe72715667eb64ec909b5a5f66d3707946b231",
                 "shasum": ""
             },
             "require": {
@@ -10294,7 +10294,7 @@
             "description": "🧱 Makefile building blocks",
             "support": {
                 "issues": "https://github.com/WyriHaximus/Makefiles/issues",
-                "source": "https://github.com/WyriHaximus/Makefiles/tree/0.16.0"
+                "source": "https://github.com/WyriHaximus/Makefiles/tree/0.16.1"
             },
             "funding": [
                 {
@@ -10302,8 +10302,8 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-11-25T20:08:53+00:00",
-            "published-time": "2026-11-25T20:19:29+00:00"
+            "time": "2026-11-27T19:01:42+00:00",
+            "published-time": "2026-11-27T20:22:50+00:00"
         },
         {
             "name": "wyrihaximus/phpstan-no-safe",
